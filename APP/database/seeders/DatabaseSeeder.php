@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             KategoriaSeeder::class,
             AretoaSeeder::class,
+            EkitaldiaSeeder::class,
         ]);
     }
 }
