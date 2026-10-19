@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             EkitaldiaSeeder::class,
             SaioaSeeder::class,
             EserlekuaSeeder::class,
+            SarreraSeeder::class,
         ]);
     }
 }
