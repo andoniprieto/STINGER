@@ -25,5 +25,14 @@ class EkitaldiaSeeder extends Seeder
                 )->modelKeys()
             );
         }
+
+        $ekitaldia = Ekitaldia::factory()->create([
+            'izenburua' => 'Stinger Live'
+        ]);
+        $ekitaldia->kategoriak()->attach(
+            $kategoriak->random(
+                rand(1, min(3, $kategoriak->count()))
+            )->modelKeys()
+        );
     }
 }

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             KategoriaSeeder::class,
             AretoaSeeder::class,
             EkitaldiaSeeder::class,
+            SaioaSeeder::class,
         ]);
     }
 }

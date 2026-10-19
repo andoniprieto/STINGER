@@ -14,5 +14,9 @@ class AretoaSeeder extends Seeder
     public function run(): void
     {
         Aretoa::factory()->count(5)->create();
+
+        Aretoa::factory()->create([
+            'izena' => 'Stinger Nagusia',
+        ]);
     }
 }
