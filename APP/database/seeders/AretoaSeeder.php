@@ -13,10 +13,16 @@ class AretoaSeeder extends Seeder
      */
     public function run(): void
     {
-        Aretoa::factory()->count(5)->create();
+        Aretoa::factory()->create([
+            'izena' => 'Areto nagusia',
+        ]);
 
         Aretoa::factory()->create([
-            'izena' => 'Stinger Nagusia',
+            'izena' => 'Areto ertaina',
+        ]);
+
+        Aretoa::factory()->create([
+            'izena' => 'Areto txikia',
         ]);
     }
 }

@@ -21,10 +21,10 @@ class KategoriaFactory extends Factory
             'izena' => fake()->unique()->randomElement([
                 'Musika',
                 'Antzerkia',
-                'Kirola',
-                'Zinema',
+                'Bertsolaritza',
                 'Dantza',
-                'Jaialdia',
+                'Haurrak',
+                'Zinema',
             ]),
         ];
     }

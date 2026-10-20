@@ -15,10 +15,19 @@ class SaioaSeeder extends Seeder
      */
     public function run(): void
     {
-        $aretoa = Aretoa::where('izena', 'Stinger Nagusia')->firstOrFail();
-        $ekitaldia = Ekitaldia::where('izenburua', 'Stinger Live')->firstOrFail();
+        $aretoa = Aretoa::where('izena', 'Areto nagusia')->firstOrFail();
+        $ekitaldia = Ekitaldia::findOrFail(1);
 
         Saioa::factory()->count(3)->create([
+            'aretoa_id' => $aretoa->id,
+            'ekitaldia_id' => $ekitaldia->id,
+        ]);
+
+
+        $aretoa = Aretoa::where('izena', 'Areto ertaina')->firstOrFail();
+        $ekitaldia = Ekitaldia::findOrFail(2);
+
+        Saioa::factory()->count(1)->create([
             'aretoa_id' => $aretoa->id,
             'ekitaldia_id' => $ekitaldia->id,
         ]);

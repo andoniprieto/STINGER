@@ -19,9 +19,7 @@ class SarreraSeeder extends Seeder
         $erabiltzailea = User::where('email', 'user@example.com')
             ->firstOrFail();
 
-        $saioa = Saioa::whereHas('ekitaldia', function ($query) {
-            $query->where('izenburua', 'Stinger Live');
-        })->firstOrFail();
+        $saioa = Saioa::where('ekitaldia_id', 2)->firstOrFail();
 
         $eserlekua = Eserlekua::where('aretoa_id', $saioa->aretoa_id)
             ->where('ilara', 1)

@@ -14,10 +14,36 @@ class EserlekuaSeeder extends Seeder
      */
     public function run(): void
     {
-        $aretoa = Aretoa::where('izena', 'Stinger Nagusia')->firstOrFail();
+        $aretoa = Aretoa::where('izena', 'Areto nagusia')->firstOrFail();
+
+        for ($ilara = 1; $ilara <= 7; $ilara++) {
+            for ($zenbakia = 1; $zenbakia <= 10; $zenbakia++) {
+                Eserlekua::factory()->create([
+                    'aretoa_id' => $aretoa->id,
+                    'ilara' => $ilara,
+                    'zenbakia' => $zenbakia,
+                ]);
+            }
+        }
+
+
+        $aretoa = Aretoa::where('izena', 'Areto ertaina')->firstOrFail();
 
         for ($ilara = 1; $ilara <= 5; $ilara++) {
-            for ($zenbakia = 1; $zenbakia <= 10; $zenbakia++) {
+            for ($zenbakia = 1; $zenbakia <= 7; $zenbakia++) {
+                Eserlekua::factory()->create([
+                    'aretoa_id' => $aretoa->id,
+                    'ilara' => $ilara,
+                    'zenbakia' => $zenbakia,
+                ]);
+            }
+        }
+
+
+        $aretoa = Aretoa::where('izena', 'Areto txikia')->firstOrFail();
+
+        for ($ilara = 1; $ilara <= 3; $ilara++) {
+            for ($zenbakia = 1; $zenbakia <= 5; $zenbakia++) {
                 Eserlekua::factory()->create([
                     'aretoa_id' => $aretoa->id,
                     'ilara' => $ilara,

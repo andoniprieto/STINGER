@@ -14,25 +14,66 @@ class EkitaldiaSeeder extends Seeder
      */
     public function run(): void
     {
-        $ekitaldiak = Ekitaldia::factory()->count(10)->create();
+        $ekitaldia = Ekitaldia::factory()->create([
+            'izenburua' => 'Bertso saioa: udazkeneko jaialdia',
+            'prezioa' => 10,
+        ]);
 
-        $kategoriak = Kategoria::all();
+        $ekitaldia->kategoriak()->attach([
+            Kategoria::where('izena', 'Bertsolaritza')->firstOrFail()->id,
+            Kategoria::where('izena', 'Musika')->firstOrFail()->id,
+        ]);
 
-        foreach ($ekitaldiak as $ekitaldia) {
-            $ekitaldia->kategoriak()->attach(
-                $kategoriak->random(
-                    rand(1, min(3, $kategoriak->count()))
-                )->modelKeys()
-            );
-        }
 
         $ekitaldia = Ekitaldia::factory()->create([
-            'izenburua' => 'Stinger Live'
+            'izenburua' => 'Antzerkia: Etxeko giltzak',
+            'prezioa' => 14,
         ]);
-        $ekitaldia->kategoriak()->attach(
-            $kategoriak->random(
-                rand(1, min(3, $kategoriak->count()))
-            )->modelKeys()
-        );
+
+        $ekitaldia->kategoriak()->attach([
+            Kategoria::where('izena', 'Antzerkia')->firstOrFail()->id,
+        ]);
+
+
+        $ekitaldia = Ekitaldia::factory()->create([
+            'izenburua' => 'Jazz gaua: hirukote akustikoa',
+            'prezioa' => 12,
+        ]);
+
+        $ekitaldia->kategoriak()->attach([
+            Kategoria::where('izena', 'Musika')->firstOrFail()->id,
+        ]);
+
+
+        $ekitaldia = Ekitaldia::factory()->create([
+            'izenburua' => 'Haurrentzako antzerkia: Ilargiaren bidaia',
+            'prezioa' => 6,
+        ]);
+
+        $ekitaldia->kategoriak()->attach([
+            Kategoria::where('izena', 'Antzerkia')->firstOrFail()->id,
+            Kategoria::where('izena', 'Haurrak')->firstOrFail()->id,
+        ]);
+
+
+        $ekitaldia = Ekitaldia::factory()->create([
+            'izenburua' => 'Dantza garaikidea: Arnasa',
+            'prezioa' => 15,
+        ]);
+
+        $ekitaldia->kategoriak()->attach([
+            Kategoria::where('izena', 'Dantza')->firstOrFail()->id,
+        ]);
+
+
+        $ekitaldia = Ekitaldia::factory()->create([
+            'izenburua' => 'Zinema forum: euskal film laburrak',
+            'prezioa' => 5,
+        ]);
+
+        $ekitaldia->kategoriak()->attach([
+            Kategoria::where('izena', 'Zinema')->firstOrFail()->id,
+        ]);
+
     }
 }
