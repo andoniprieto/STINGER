@@ -21,6 +21,12 @@
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
             @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
+                    <a
+                        href="{{ route('ekitaldia') }}"
+                        class="inline-block px-5 py-1.5 bg-[#b91c1c] hover:bg-[#991b1b] text-white rounded-sm text-sm leading-normal"
+                    >
+                        Ver ekitaldia
+                    </a>
                     @auth
                         <a
                             href="{{ url('/dashboard') }}"
