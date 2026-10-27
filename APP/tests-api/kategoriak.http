@@ -1,0 +1,35 @@
+### 1. Kategoriak eskuratu (GET)
+GET http://localhost:8000/kategoriak
+
+###
+
+### Kategoria bat sortu (POST)
+POST http://localhost:8000/kategoriak
+Content-Type: application/json
+Accept: application/json
+
+{
+    "izena": "Kategoria proba"
+}
+
+###
+
+### 1. Kategoria bat eskuratu (GET)
+GET http://localhost:8000/kategoriak/1
+
+###
+
+### Kategoria bat editatu (POST)
+PUT http://localhost:8000/kategoriak/7
+Content-Type: application/json
+Accept: application/json
+
+{
+    "izena": "Kategoria proba editatu2"
+}
+
+###
+
+### Kategoria bat ezabatu (DELETE)
+DELETE http://localhost:8000/kategoriak/8
+Accept: application/json
