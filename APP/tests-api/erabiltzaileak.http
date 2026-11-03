@@ -1,0 +1,43 @@
+### Erabiltzaileak eskuratu (GET)
+GET http://localhost:8000/erabiltzaileak
+
+###
+
+### Erabiltzaile bat sortu (POST)
+POST http://localhost:8000/erabiltzaileak
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Proba",
+    "abizena": "Abizena",
+    "email": "proba@example.com",
+    "telefonoa": "666666666",
+    "password": "password",
+    "password_confirmation": "password"
+}
+
+###
+
+### Erabiltzaile bat eskuratu (GET)
+GET http://localhost:8000/erabiltzaileak/3
+
+###
+
+### Erabiltzaile bat editatu (PUT)
+PUT http://localhost:8000/erabiltzaileak/3
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Proba editatu",
+    "abizena": "Abizena editatu",
+    "email": "proba@example.com",
+    "telefonoa": "666666666"
+}
+
+###
+
+### Erabiltzaile bat ezabatu (DELETE)
+DELETE http://localhost:8000/erabiltzaileak/3
+Accept: application/json
