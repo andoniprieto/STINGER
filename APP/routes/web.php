@@ -3,9 +3,21 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Front-end (prototipoa, datu finkoekin)
+Route::view('/', 'front-end.home');
+Route::view('/ekitaldiak/{id}', 'front-end.detail');
+Route::view('/saioa-hasi', 'front-end.login');
+Route::view('/erregistratu', 'front-end.register');
+Route::view('/erosi', 'front-end.buy');
+Route::view('/erosita', 'front-end.done');
+Route::view('/sarrerak', 'front-end.tickets');
+Route::view('/admin/ekitaldiak', 'front-end.admin.events');
+Route::view('/admin/ekitaldiak/sortu', 'front-end.admin.event-form');
+Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.event-form');
+Route::view('/admin/erabiltzaileak', 'front-end.admin.users');
+Route::view('/admin/erabiltzaileak/sortu', 'front-end.admin.user-form');
+Route::view('/admin/erabiltzaileak/{id}', 'front-end.admin.user-show');
+Route::view('/admin/erabiltzaileak/{id}/editatu', 'front-end.admin.user-form');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
