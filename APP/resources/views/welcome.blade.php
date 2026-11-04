@@ -27,6 +27,12 @@
                     >
                         Ver ekitaldia
                     </a>
+                    <a
+                        href="{{ route('ekitaldien.kudeaketa') }}"
+                        class="inline-block px-5 py-1.5 bg-[#b91c1c] hover:bg-[#991b1b] text-white rounded-sm text-sm leading-normal"
+                    >
+                        Ver ekitaldien kudeaketa
+                    </a>
                     @auth
                         <a
                             href="{{ url('/dashboard') }}"

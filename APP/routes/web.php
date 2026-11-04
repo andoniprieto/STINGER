@@ -8,6 +8,7 @@ Route::get('/', function () {
 });
 
 Route::view('/ekitaldia', 'ekitaldia')->name('ekitaldia');
+Route::view('/admin/ekitaldiak', 'ekitaldien_kudeaketa')->name('ekitaldien.kudeaketa');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
