@@ -1,13 +1,5 @@
 @extends('front-end.layout')
 @section('content')
-    @php
-        $users = [
-            ['id' => 1, 'name' => 'Ane Etxeberria', 'email' => 'ane@adibidea.eus', 'role' => 'Arrunta', 'since' => '2026-09-12'],
-            ['id' => 2, 'name' => 'Antzokiko administrazioa', 'email' => 'admin@antzokia.eus', 'role' => 'Administratzailea', 'since' => '2026-09-01'],
-            ['id' => 3, 'name' => 'Jon Agirre', 'email' => 'jon@adibidea.eus', 'role' => 'Arrunta', 'since' => '2026-09-20'],
-            ['id' => 4, 'name' => 'Maite Larrañaga', 'email' => 'maite@adibidea.eus', 'role' => 'Arrunta', 'since' => '2026-09-28'],
-        ];
-    @endphp
     <h2>Erabiltzaileak</h2>
     <p><a href="/admin/erabiltzaileak/create">+ Erabiltzaile berria</a></p>
     <table border="1">
@@ -28,8 +20,12 @@
                 <td>{{ $u['rola'] }}</td>
                 <td>
                     <a href="/admin/erabiltzaileak/{{ $u['id'] }}">Ikusi</a>
-                    <a href="/admin/erabiltzaileak/{{ $u['id'] }}/editatu">Editatu</a>
-                    <button onclick="return confirm('Ezabatu?')">Ezabatu</button>
+                    <a href="/admin/erabiltzaileak/{{ $u['id'] }}/edit">Editatu</a>
+                    <form action="{{ url('/admin/erabiltzaileak/' . $u->id) }} " method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick="return confirm('Ezabatu?')">Ezabatu</button>
+                    </form>
                 </td>
             </tr>
         @endforeach

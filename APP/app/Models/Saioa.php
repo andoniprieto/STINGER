@@ -19,7 +19,10 @@ class Saioa extends Model
 
     protected function casts(): array
     {
-        return ['data' => 'date'];
+        return [
+            'data' => 'date',
+            'ordua' => 'datetime',
+        ];
     }
 
     public function aretoa()

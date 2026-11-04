@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Rola;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ErabiltzaileakController extends Controller
 {
@@ -11,13 +13,12 @@ class ErabiltzaileakController extends Controller
     {
         $erabiltzaileak = User::all();
 
-        //return view('erabiltzaileak', ['erabiltzaileak' => $erabiltzaileak]);
-        return response()->json($erabiltzaileak);
+        return view('front-end.admin.erabiltzaileak.index', ['erabiltzaileak' => $erabiltzaileak]);
     }
 
     public function create()
     {
-        return view('erabiltzaileak.create');
+        return view('front-end.admin.erabiltzaileak.create');
     }
 
     public function store(Request $request)
@@ -28,30 +29,30 @@ class ErabiltzaileakController extends Controller
             'email' => 'required|email|unique:users,email',
             'telefonoa' => 'required|string|unique:users,telefonoa|min:9|max:9',
             'password' => 'required|string|min:8|confirmed',
+            'rola' => ['required', Rule::enum(Rola::class)],
         ]);
 
         User::create($request->all());
 
-        //return redirect()->route('erabiltzaileak')->with('success', 'Erabiltzailea ongi gehitu da!');
-        return response()->json([
-            'mezua' => 'Erabiltzailea ongi gehitu da!',
-            'jasotako_datuak' => $request->all()
-        ], 201);
+        return redirect()->route('front-end.admin.erabiltzaileak.index')->with('success', 'Erabiltzailea ongi gehitu da!');
     }
 
     public function show($id)
     {
         $erabiltzailea = User::findOrFail($id);
+        $sarrerak = $erabiltzailea->sarrerak;
 
-        //return view('erabiltzaileak.show', ['erabiltzailea' => $erabiltzailea]);
-        return response()->json($erabiltzailea);
+        return view('front-end.admin.erabiltzaileak.show', [
+            'erabiltzailea' => $erabiltzailea,
+            'sarrerak' => $sarrerak
+        ]);
     }
 
     public function edit($id)
     {
         $erabiltzailea = User::findOrFail($id);
 
-        return view('erabiltzaileak.edit', ['erabiltzailea' => $erabiltzailea]);
+        return view('front-end.admin.erabiltzaileak.edit', ['erabiltzailea' => $erabiltzailea]);
     }
 
     public function update(Request $request, $id)
@@ -62,6 +63,7 @@ class ErabiltzaileakController extends Controller
             'email' => 'required|email|unique:users,email,' . $id,
             'telefonoa' => 'required|string||min:9|max:9|unique:users,telefonoa,' . $id,
             'password' => 'nullable|string|min:8|confirmed',
+            'rola' => ['required', Rule::enum(Rola::class)],
         ]);
 
         $erabiltzailea = User::findOrFail($id);
@@ -73,22 +75,13 @@ class ErabiltzaileakController extends Controller
 
         $erabiltzailea->update($data);
 
-        //return redirect()->route('erabiltzaileak')->with('success', 'Erabiltzailea ongi editatu da!');
-        return response()->json([
-            'status' => 'success',
-            'mezua' => 'Erabiltzailea ' . $id . ' ongi editatu da!',
-            'jasotako_datuak' => $request->all()
-        ], 200);
+        return redirect()->route('front-end.admin.erabiltzaileak.index')->with('success', 'Erabiltzailea ongi editatu da!');
     }
 
     public function destroy($id)
     {
         User::destroy($id);
 
-        //return redirect()->route('erabiltzaileak')->with('success', 'Erabiltzailea ongi ezabatu da!');
-        return response()->json([
-            'status' => 'success',
-            'mezua' => 'Erabiltzailea ' . $id . ' ongi ezabatu da!'
-        ], 200);
+        return redirect()->route('front-end.admin.erabiltzaileak.index')->with('success', 'Erabiltzailea ongi ezabatu da!');
     }
 }

@@ -4,14 +4,14 @@ use App\Http\Controllers\ErabiltzaileakController;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/erabiltzaileak', [ErabiltzaileakController::class, 'index'])/*->middleware(['auth', 'verified'])*/ ->name('erabiltzaileak');
+Route::get('/admin/erabiltzaileak', [ErabiltzaileakController::class, 'index'])->middleware(['auth', 'verified'])->name('front-end.admin.erabiltzaileak.index');
 
-Route::get('/erabiltzaileak/create', [ErabiltzaileakController::class, 'create'])->middleware(['auth', 'verified'])->name('erabiltzaileak.create');
-Route::post('/erabiltzaileak', [ErabiltzaileakController::class, 'store'])->withoutMiddleware(PreventRequestForgery::class)/*->middleware(['auth', 'verified'])*/ ->name('erabiltzaileak.store');
+Route::get('/admin/erabiltzaileak/create', [ErabiltzaileakController::class, 'create'])->middleware(['auth', 'verified'])->name('front-end.admin.erabiltzaileak.create');
+Route::post('/admin/erabiltzaileak', [ErabiltzaileakController::class, 'store'])->middleware(['auth', 'verified'])->name('front-end.admin.erabiltzaileak.store');
 
-Route::get('/erabiltzaileak/{id}', [ErabiltzaileakController::class, 'show'])/*->middleware(['auth', 'verified'])*/ ->name('erabiltzaileak.show');
+Route::get('/admin/erabiltzaileak/{id}', [ErabiltzaileakController::class, 'show'])->middleware(['auth', 'verified'])->name('front-end.admin.erabiltzaileak.show');
 
-Route::get('/erabiltzaileak/{id}/edit', [ErabiltzaileakController::class, 'edit'])->middleware(['auth', 'verified'])->name('erabiltzaileak.edit');
-Route::put('/erabiltzaileak/{id}', [ErabiltzaileakController::class, 'update'])->withoutMiddleware(PreventRequestForgery::class)/*->middleware(['auth', 'verified'])*/ ->name('erabiltzaileak.update');
+Route::get('/admin/erabiltzaileak/{id}/edit', [ErabiltzaileakController::class, 'edit'])->middleware(['auth', 'verified'])->name('front-end.admin.erabiltzaileak.edit');
+Route::put('/admin/erabiltzaileak/{id}', [ErabiltzaileakController::class, 'update'])->middleware(['auth', 'verified'])->name('front-end.admin.erabiltzaileak.update');
 
-Route::delete('/erabiltzaileak/{id}', [ErabiltzaileakController::class, 'destroy'])->withoutMiddleware(PreventRequestForgery::class)/*->middleware(['auth', 'verified'])*/ ->name('erabiltzaileak.destroy');
+Route::delete('/admin/erabiltzaileak/{id}', [ErabiltzaileakController::class, 'destroy'])->middleware(['auth', 'verified'])->name('front-end.admin.erabiltzaileak.destroy');
