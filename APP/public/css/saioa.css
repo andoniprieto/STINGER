@@ -1,0 +1,24 @@
+body { background: #f4f4f2; font-family: "Source Sans 3", sans-serif; color: #374151; }
+.saioa-card { max-width: 558px; margin: 28px auto; background: #fff; border: 1px solid #e5e5e3; border-radius: 16px; padding: 30px 32px 36px; }
+.saioa-card h1 { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 32px; color: #111827; margin-bottom: 14px; }
+.saioa-card p { font-size: 16px; color: #4b5563; }
+.saioa-card .form-label { font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px; }
+.saioa-card .form-control { height: 44px; border: 1px solid #9ca3af; border-radius: 8px; }
+.saioa-card .mb-3 { margin-bottom: 14px !important; }
+.saioa-card .btn-danger { height: 44px; background: #b91c1c; border-color: #b91c1c; border-radius: 6px; font-weight: 700; font-size: 15px; }
+.saioa-card a { color: #b91c1c; font-weight: 700; }
+.saioa-intro { margin: 20px 0 12px; }
+
+/* Mugikorra */
+@media (max-width: 575.98px) {
+    .saioa-card { margin: 0 -16px; border: 0; border-radius: 0; background: transparent; padding: 22px 16px 32px; }
+    .saioa-card h1 { font-size: 28px; margin-bottom: 12px; }
+    .saioa-card p { font-size: 17px; line-height: 1.4; }
+    .saioa-intro { margin: 18px 0 14px; }
+    .saioa-card .form-label { font-size: 15px; margin-bottom: 6px; }
+    .saioa-card .form-control { height: 48px; border-radius: 10px; }
+    .saioa-card .mb-3 { margin-bottom: 16px !important; }
+    .saioa-card .btn-danger { height: 52px; border-radius: 10px; font-size: 18px; }
+    .saioa-btn-bigarren { margin-top: 16px; height: 48px; display: flex; align-items: center; justify-content: center;
+        background: #fff; border: 1px solid #9ca3af; border-radius: 10px; color: #111827 !important; font-weight: 600 !important; font-size: 16px; }
+}
