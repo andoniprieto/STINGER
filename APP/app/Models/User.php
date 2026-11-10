@@ -31,4 +31,9 @@ class User extends Authenticatable
             'rola' => Rola::class,
         ];
     }
+
+    public function sarrerak()
+    {
+        return $this->hasMany(Sarrera::class);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Ekitaldia;
 use App\Models\Eserlekua;
 use App\Models\Saioa;
 use App\Models\Sarrera;
@@ -16,23 +17,20 @@ class SarreraSeeder extends Seeder
      */
     public function run(): void
     {
-        $erabiltzailea = User::where('email', 'user@example.com')
+        $user = User::where('email', 'user@example.com')
             ->firstOrFail();
 
-        $saioa = Saioa::where('ekitaldia_id', 2)->firstOrFail();
+        $ekitaldia = Ekitaldia::findOrFail(2);
 
-        $eserlekua = Eserlekua::where('aretoa_id', $saioa->aretoa_id)
-            ->where('ilara', 1)
-            ->where('zenbakia', 1)
-            ->firstOrFail();
+        $kopurua = 2;
+        $prezioa = $ekitaldia->prezioa;
+        $prezio_totala = $kopurua * $prezioa;
 
         Sarrera::factory()->create([
-            'erabiltzailea_id' => $erabiltzailea->id,
-            'eserlekua_id' => $eserlekua->id,
-            'saioa_id' => $saioa->id,
-            'prezioa' => $saioa->ekitaldia->prezioa,
-            'erosketa_data' => now()->toDateString(),
-            'egoera' => 'Baliozkoa',
+            'user_id' => $user->id,
+            'ekitaldia_id' => $ekitaldia->id,
+            'kopurua' => $kopurua,
+            'prezio_totala' => $prezio_totala,
         ]);
     }
 }

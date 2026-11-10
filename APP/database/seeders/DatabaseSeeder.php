@@ -18,11 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            KategoriaSeeder::class,
-            AretoaSeeder::class,
             EkitaldiaSeeder::class,
-            SaioaSeeder::class,
-            EserlekuaSeeder::class,
             SarreraSeeder::class,
         ]);
     }

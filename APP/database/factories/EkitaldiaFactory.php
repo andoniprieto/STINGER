@@ -21,6 +21,9 @@ class EkitaldiaFactory extends Factory
             'izenburua' => fake()->sentence(3),
             'deskribapena' => fake()->text(200),
             'prezioa' => fake()->randomFloat(2, 5, 150),
+            'data' => fake()->dateTimeBetween('now', '+6 months')
+                ->format('Y-m-d'),
+            'ordua' => fake()->time('H:i:s'),
         ];
     }
 }
