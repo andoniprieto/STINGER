@@ -2,9 +2,7 @@
 
 **Bergarako Antzokiaren web aplikazioa:** ekitaldiak kontsultatu, sarrerak online erosi eta antzokiaren programazioa kudeatu.
 
-1. ebaluazioko erronka · Laravel · MySQL · Apache Lounge · Odoo
 
-> README honek proiektuaren lehen zatia jasotzen du: **analisia, aurreproiektua eta prototipoa**. Garapena, instalazio-gida eta argitalpena hurrengo faseetan gehituko dira.
 
 ---
 
