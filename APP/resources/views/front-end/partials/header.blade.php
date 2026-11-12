@@ -4,7 +4,9 @@
       - Bisitaria (saioa hasi gabe): Ekitaldiak, Erregistratu, Saioa hasi
       - Erabiltzaile arrunta: Ekitaldiak, Nire sarrerak, izena + Saioa itxi
       - Administratzailea: arruntarenak + Ekitaldien kudeaketa, Erabiltzaileak
-    Mugikorrean menua botoi baten atzean ezkutatzen da (Bootstrap navbar).
+    Tableta (768-991px): menua botoi baten atzean (Bootstrap navbar).
+    Mugikorra (< 768px): goiko menurik ez; beheko barra erabiltzen da (partials/footer)
+    eta, saioa hasita, inizialen botoiak profilera eramaten du (Prototipoa_Mugikorra).
 --}}
 @php
     $erabiltzailea = auth()->user();
@@ -24,8 +26,15 @@
             </span>
         </a>
 
-        {{-- Mugikorreko botoia (☰) --}}
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menua"
+        {{-- Mugikorra: inizialak profilera (prototipoa) --}}
+        @auth
+            <a href="{{ url('/profila') }}" class="goiburu-inizialak d-md-none" aria-label="Nire profila">
+                {{ mb_strtoupper(mb_substr($erabiltzailea->name, 0, 1) . mb_substr($erabiltzailea->abizena ?? '', 0, 1)) }}
+            </a>
+        @endauth
+
+        {{-- Tabletako botoia (☰); mugikorrean ezkutatuta, beheko barra dagoelako --}}
+        <button class="navbar-toggler d-none d-md-block d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#menua"
                 aria-controls="menua" aria-expanded="false" aria-label="Menua ireki">
             <span class="navbar-toggler-icon"></span>
         </button>

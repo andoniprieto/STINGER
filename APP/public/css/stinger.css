@@ -102,3 +102,13 @@ a:hover { color: #7f1d1d; }
     /* Edukia barraren atzean ez geratzeko */
     body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
 }
+
+/* ===== Mugikorrean goiko menua ezkutatu (beheko barra dago) ===== */
+.goiburu-inizialak {
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; background: #b91c1c; color: #fff;
+    font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; text-decoration: none; flex: 0 0 auto;
+}
+.goiburu-inizialak:hover, .goiburu-inizialak:focus-visible { color: #fff; background: #991b1b; }
+@media (max-width: 767.98px) {
+    .goiburu-nagusia .navbar-collapse { display: none !important; }
+}
