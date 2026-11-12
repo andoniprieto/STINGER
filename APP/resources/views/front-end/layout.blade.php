@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="{{ asset('css/stinger.css') }}" rel="stylesheet">
+    @stack('estiloak')
 </head>
 <body class="d-flex flex-column min-vh-100">
 

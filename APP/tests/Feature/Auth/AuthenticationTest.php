@@ -4,27 +4,36 @@ use App\Enums\Rola;
 use App\Models\User;
 
 test('login screen can be rendered', function () {
-    $response = $this->get('/login');
+    $this->get('/saioa-hasi')
+        ->assertOk()
+        ->assertSee('Saioa hasi')
+        ->assertSee('action="'.url('/saioa-hasi').'"', false);
+});
 
-    $response->assertStatus(200);
+test('old login url redirects to the stinger login', function () {
+    $this->get('/login')->assertRedirect('/saioa-hasi');
+});
+
+test('guests are sent to the stinger login when a page needs authentication', function () {
+    $this->get('/admin/erabiltzaileak')->assertRedirect('/saioa-hasi');
 });
 
 test('users can authenticate using the login screen', function () {
     $user = User::factory()->create();
 
-    $response = $this->post('/login', [
+    $response = $this->post('/saioa-hasi', [
         'email' => $user->email,
         'password' => 'password',
     ]);
 
     $this->assertAuthenticated();
-    $response->assertRedirect(route('dashboard', absolute: false));
+    $response->assertRedirect('/');
 });
 
 test('users can not authenticate with invalid password', function () {
     $user = User::factory()->create();
 
-    $this->post('/login', [
+    $this->post('/saioa-hasi', [
         'email' => $user->email,
         'password' => 'wrong-password',
     ]);

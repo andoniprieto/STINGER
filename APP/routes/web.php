@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Route;
 // Front-end (prototipoa, datu finkoekin)
 Route::view('/', 'front-end.home');
 Route::view('/ekitaldiak/{id}', 'front-end.detail');
-Route::view('/saioa-hasi', 'front-end.login');
-Route::view('/erregistratu', 'front-end.register');
 Route::view('/erosi', 'front-end.buy');
 Route::view('/erosita', 'front-end.done');
 Route::view('/sarrerak', 'front-end.tickets');
