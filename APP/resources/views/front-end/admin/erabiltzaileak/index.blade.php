@@ -7,7 +7,7 @@
             <div class="goiburua gorria text-uppercase">Administrazioa</div>
             <h1 class="mb-0">Erabiltzaileen kudeaketa</h1>
         </div>
-        <a href="{{ route('front-end.admin.erabiltzaileak.create') }}" class="btn btn-gorria">+ Erabiltzaile berria</a>
+        <a href="{{ route('front-end.admin.erabiltzaileak.create') }}" class="btn btn-gorria botoi-nagusia">+ Erabiltzaile berria</a>
     </div>
 
     @if (session('success'))
@@ -20,7 +20,39 @@
     @if ($erabiltzaileak->isEmpty())
         <div class="hutsik p-4 text-center">Oraindik ez dago erabiltzailerik.</div>
     @else
-        <div class="txartela taula table-responsive">
+        {{-- Mugikorra: txartelak (Prototipoa_Mugikorra) --}}
+        <div class="d-flex flex-column gap-3 d-md-none">
+            @foreach ($erabiltzaileak as $u)
+                @php $niDa = auth()->id() === $u->id; @endphp
+                <article class="txartela p-3 d-flex flex-column gap-3">
+                    <div class="d-flex justify-content-between align-items-start gap-2">
+                        <div class="d-flex flex-column min-w-0">
+                            <span class="fw-bold">
+                                {{ $u->name }} {{ $u->abizena }}
+                                @if ($niDa)
+                                    <span class="etiketa etiketa-zu">Zu</span>
+                                @endif
+                            </span>
+                            <span class="small text-secondary text-truncate">{{ $u->email }}</span>
+                            <span class="small text-secondary">{{ $u->telefonoa }}</span>
+                        </div>
+                        <span class="flex-shrink-0">@include('front-end.admin.erabiltzaileak.partials.rola', ['rola' => $u->rola])</span>
+                    </div>
+                    <div class="mugikor-botoiak">
+                        <a href="{{ route('front-end.admin.erabiltzaileak.show', $u->id) }}" class="btn btn-zuria">Ikusi</a>
+                        <a href="{{ route('front-end.admin.erabiltzaileak.edit', $u->id) }}" class="btn btn-zuria">Editatu</a>
+                        <button type="button" class="btn btn-ezabatu" @disabled($niDa)
+                                data-bs-toggle="modal" data-bs-target="#ezabatuModala"
+                                data-ekintza="{{ route('front-end.admin.erabiltzaileak.destroy', $u->id) }}"
+                                data-izena="{{ $u->name }} {{ $u->abizena }}"
+                                data-posta="{{ $u->email }}">Ezabatu</button>
+                    </div>
+                </article>
+            @endforeach
+        </div>
+
+        {{-- Ordenagailua eta tableta: taula --}}
+        <div class="txartela taula table-responsive d-none d-md-block">
             <table class="table align-middle mb-0">
                 <thead>
                     <tr>
@@ -91,7 +123,7 @@
                 <form id="ezabatuFormularioa" method="POST" class="m-0">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-gorria">Bai, ezabatu</button>
+                    <button type="submit" class="btn btn-gorria w-100">Bai, ezabatu</button>
                 </form>
             </div>
         </div>

@@ -64,7 +64,7 @@
     @error('rola') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
 
-<div class="d-flex flex-wrap gap-2">
+<div class="formulario-botoiak">
     <button type="submit" class="btn btn-gorria">Gorde</button>
     <a href="{{ route('front-end.admin.erabiltzaileak.index') }}" class="btn btn-zuria">Utzi</a>
 </div>

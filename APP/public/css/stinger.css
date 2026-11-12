@@ -53,3 +53,31 @@ a:hover { color: #7f1d1d; }
 .ezabatu-oina { background: #fafaf9; border-top: 1px solid #e7e5e4; gap: 8px; }
 .ezabatu-oina > * { margin: 0; }
 .modal-backdrop.show { opacity: .6; background: #111827; }
+
+/* ===== Responsive (Prototipoa_Mugikorra) ===== */
+.min-w-0 { min-width: 0; }
+.taula.table-responsive { overflow-x: auto; }
+.mugikor-botoiak { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mugikor-botoiak .btn { min-height: 44px; border-radius: 12px; padding: 0 6px; display: flex; align-items: center; justify-content: center; }
+.formulario-botoiak { display: flex; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 575.98px) {
+    /* Botoi nagusiak eta formularioetakoak zabalera osoan, 48px-ko altuerarekin (hatzarekin sakatzeko) */
+    .botoi-nagusia { width: 100%; min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+    .formulario-botoiak { flex-direction: column; }
+    .formulario-botoiak .btn { width: 100%; min-height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .formulario-botoiak .btn-gorria { font-size: 17px; }
+    .orria h1 { font-size: 28px; }
+    .orria.py-5 { padding-top: 1.5rem !important; padding-bottom: 2rem !important; }
+    .txartela.p-4 { padding: 1.25rem !important; }
+    .abatarra { width: 56px; height: 56px; font-size: 20px; }
+    /* Ezabatu leihoa: botoiak bata bestearen azpian, "Bai, ezabatu" goian */
+    .ezabatu-oina { flex-direction: column-reverse; align-items: stretch; }
+    .ezabatu-oina .btn { width: 100%; min-height: 48px; border-radius: 12px; }
+}
+
+/* Bootstrap-ek :hover/:active-en ertza eta atzealdea gardena jartzen ditu; gure botoiek beren itxura mantendu dezaten */
+.btn-zuria:hover, .btn-zuria:focus-visible, .btn-zuria:active, .btn-zuria.active { background: #f5f5f4 !important; border-color: #6b7280 !important; color: #111827 !important; }
+.btn-gorria:focus-visible, .btn-gorria:active { background: #991b1b !important; border-color: #991b1b !important; color: #fff !important; }
+.btn-ezabatu:hover, .btn-ezabatu:focus-visible, .btn-ezabatu:active { background: #fee2e2 !important; border-color: #f87171 !important; color: #991b1b !important; }
+.btn-ezabatu:disabled { background: #fff; border-color: #d1d5db; color: #9ca3af; }
