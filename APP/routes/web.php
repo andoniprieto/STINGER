@@ -24,6 +24,8 @@ Route::view('/orri-printzipala', 'Orri-printzipala')->name('orri-printzipala');
 Route::view('/ekitaldia', 'ekitaldia')->name('ekitaldia');
 Route::view('/admin/ekitaldiak', 'ekitaldien_kudeaketa')->name('ekitaldien.kudeaketa');
 
+Route::view('/sarrerak-erosi', 'Sarrerakerosi')->name('sarrerakerosi');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
