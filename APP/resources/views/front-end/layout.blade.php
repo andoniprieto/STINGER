@@ -1,23 +1,24 @@
 <!doctype html>
 <html lang="eu">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bergarako Antzokia</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bergarako Antzokia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="{{ asset('css/stinger.css') }}" rel="stylesheet">
 </head>
-<body>
-<h1><a href="/">Bergarako Antzokia</a></h1>
-<p>
-    <a href="/">Ekitaldiak</a> |
-    <a href="/sarrerak">Nire sarrerak</a> |
-    <a href="/admin/ekitaldiak">Ekitaldiak kudeatu</a> |
-    <a href="/admin/erabiltzaileak">Erabiltzaileak</a> |
-    <a href="/saioa-hasi">Saioa hasi</a> |
-    <a href="/erregistratu">Erregistratu</a>
-</p>
-<hr>
-@yield('content')
-<hr>
-<p><small>Bergarako Antzokia</small></p>
+<body class="d-flex flex-column min-vh-100">
+
+    @include('front-end.partials.header')
+
+    <main class="flex-grow-1">
+        @yield('content')
+    </main>
+
+    @include('front-end.partials.footer')
+
+    {{-- Bootstrap JS: mugikorreko menua ireki eta ixteko behar da --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

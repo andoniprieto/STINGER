@@ -11,7 +11,7 @@ class ErabiltzaileakController extends Controller
 {
     public function index()
     {
-        $erabiltzaileak = User::all();
+        $erabiltzaileak = User::orderBy('name')->get();
 
         return view('front-end.admin.erabiltzaileak.index', ['erabiltzaileak' => $erabiltzaileak]);
     }
@@ -40,7 +40,7 @@ class ErabiltzaileakController extends Controller
     public function show($id)
     {
         $erabiltzailea = User::findOrFail($id);
-        $sarrerak = $erabiltzailea->sarrerak;
+        $sarrerak = $erabiltzailea->sarrerak()->with('ekitaldia')->latest()->get();
 
         return view('front-end.admin.erabiltzaileak.show', [
             'erabiltzailea' => $erabiltzailea,
@@ -61,7 +61,7 @@ class ErabiltzaileakController extends Controller
             'name' => 'required|string|max:255',
             'abizena' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
-            'telefonoa' => 'required|string||min:9|max:9|unique:users,telefonoa,' . $id,
+            'telefonoa' => 'required|string|min:9|max:9|unique:users,telefonoa,' . $id,
             'password' => 'nullable|string|min:8|confirmed',
             'rola' => ['required', Rule::enum(Rola::class)],
         ]);
@@ -80,7 +80,11 @@ class ErabiltzaileakController extends Controller
 
     public function destroy($id)
     {
-        User::destroy($id);
+        if ((int) $id === auth()->id()) {
+            return redirect()->route('front-end.admin.erabiltzaileak.index')->with('error', 'Ezin duzu zure erabiltzailea ezabatu.');
+        }
+
+        User::findOrFail($id)->delete();
 
         return redirect()->route('front-end.admin.erabiltzaileak.index')->with('success', 'Erabiltzailea ongi ezabatu da!');
     }
