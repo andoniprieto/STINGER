@@ -90,7 +90,7 @@
                         <span class="guztira">10 €</span>
                     </div>
 
-                    <button class="btn btn-ordaindu w-100 fw-bold mb-3" type="button">Ordaindu <span class="guztira">10 €</span></button>
+                    <a id="ordaindu" href="{{ route('sarrerakerosita') }}" class="btn btn-ordaindu w-100 fw-bold mb-3 d-flex align-items-center justify-content-center">Ordaindu&nbsp;<span class="guztira">10 €</span></a>
                     <p class="gris small m-0">Prototipoa: ez da benetako ordainketarik egiten.</p>
                 </div>
             </div>
@@ -106,6 +106,7 @@
             document.querySelectorAll('.guztira').forEach(e => e.textContent = kopurua * 10 + ' €');
             document.getElementById('gutxiago').disabled = kopurua === 1;
             document.getElementById('gehiago').disabled = kopurua === 8;
+            document.getElementById('ordaindu').href = "{{ route('sarrerakerosita') }}?kopurua=" + kopurua;
         }
 
         document.getElementById('gutxiago').onclick = () => { kopurua--; eguneratu(); };

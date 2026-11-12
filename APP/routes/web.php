@@ -8,6 +8,7 @@ Route::get('/', function () {
 });
 
 Route::view('/sarrerak-erosi', 'Sarrerakerosi')->name('sarrerakerosi');
+Route::view('/sarrerak-erosita', 'Sarrerakerosita')->name('sarrerakerosita');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
