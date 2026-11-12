@@ -19,6 +19,8 @@ Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit')
 //Route::view('/admin/erabiltzaileak/{id}', 'front-end.admin.user-show');
 //Route::view('/admin/erabiltzaileak/{id}/editatu', 'front-end.admin.user-form');
 
+Route::view('/orri-printzipala', 'Orri-printzipala')->name('orri-printzipala');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
