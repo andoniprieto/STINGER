@@ -21,6 +21,9 @@ Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit')
 
 Route::view('/orri-printzipala', 'Orri-printzipala')->name('orri-printzipala');
 
+Route::view('/ekitaldia', 'ekitaldia')->name('ekitaldia');
+Route::view('/admin/ekitaldiak', 'ekitaldien_kudeaketa')->name('ekitaldien.kudeaketa');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
