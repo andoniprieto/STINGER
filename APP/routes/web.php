@@ -11,9 +11,9 @@ Route::view('/erregistratu', 'front-end.register');
 Route::view('/erosi', 'front-end.buy');
 Route::view('/erosita', 'front-end.done');
 Route::view('/sarrerak', 'front-end.tickets');
-Route::view('/admin/ekitaldiak', 'front-end.admin.events');
-Route::view('/admin/ekitaldiak/sortu', 'front-end.admin.event-form');
-Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.event-form');
+Route::view('/admin/ekitaldiak', 'front-end.admin.ekitaldiak.index');
+Route::view('/admin/ekitaldiak/sortu', 'front-end.admin.ekitaldiak.create');
+Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit');
 //Route::view('/admin/erabiltzaileak', 'front-end.admin.users');
 //Route::view('/admin/erabiltzaileak/sortu', 'front-end.admin.user-form');
 //Route::view('/admin/erabiltzaileak/{id}', 'front-end.admin.user-show');
@@ -31,3 +31,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/web-erabiltzaileak.php';
+require __DIR__.'/web-kategoriak.php';
