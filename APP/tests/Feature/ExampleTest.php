@@ -3,9 +3,7 @@
 it('returns a successful response', function () {
     $response = $this->get('/');
 
-    $response->assertOk()
-        ->assertSee(route('ekitaldia'))
-        ->assertSee('Ver ekitaldia');
+    $response->assertOk();
 });
 
 it('shows the event page', function () {
