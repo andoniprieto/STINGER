@@ -10,19 +10,22 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('ekitaldia_kategoria', function (Blueprint $table) {
+        Schema::create('sarrerak', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->constrained('users')
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
+
             $table->foreignId('ekitaldia_id')
-                ->constrained('ekitaldias')
+                ->constrained('ekitaldiak')
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
 
-            $table->foreignId('kategoria_id')
-                ->constrained('kategorias')
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
-
-            $table->unique(['ekitaldia_id', 'kategoria_id']);
+            $table->unsignedInteger('kopurua');
+            $table->decimal('prezio_totala', 5, 2);
+            $table->string('kodigoa')->unique();
+            $table->timestamps();
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('ekitaldia_kategoria');
+        Schema::dropIfExists('sarrerak');
     }
 };

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Ekitaldia;
 use App\Models\Eserlekua;
 use App\Models\Saioa;
 use App\Models\Sarrera;
@@ -21,12 +22,11 @@ class SarreraFactory extends Factory
     public function definition(): array
     {
         return [
-            'erabiltzailea_id' => User::factory(),
-            'eserlekua_id' => Eserlekua::factory(),
-            'saioa_id' => Saioa::factory(),
-            'prezioa' => fake()->randomFloat(2, 5, 150),
-            'erosketa_data' => now()->toDateString(),
-            'egoera' => 'Baliozkoa',
+            'user_id' => User::factory(),
+            'ekitaldia_id' => Ekitaldia::factory(),
+            'kopurua' => fake()->numberBetween(1, 5),
+            'prezio_totala' => fake()->randomFloat(2, 5, 150),
+            'kodigoa' => fake()->text(5),
         ];
     }
 }
