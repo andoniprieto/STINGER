@@ -16,7 +16,6 @@ class Ekitaldia extends Model
         'izenburua',
         'deskribapena',
         'kategoria',
-        'kategoria_id',
         'data',
         'ordua',
         'prezioa'
@@ -29,11 +28,6 @@ class Ekitaldia extends Model
             'ordua' => 'datetime',
             'prezioa' => 'decimal:2'
         ];
-    }
-
-    public function kategoriaModeloa()
-    {
-        return $this->belongsTo(Kategoria::class, 'kategoria_id');
     }
 
     public function sarrerak()

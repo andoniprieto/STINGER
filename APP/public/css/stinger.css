@@ -35,3 +35,21 @@ a:hover { color: #7f1d1d; }
 .taula { border-radius: 12px; overflow: hidden; }
 .taula th { background: #fafaf9; font-size: 13px; font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: .08em; padding: 14px; }
 .taula td { padding: 14px; font-size: 15px; }
+
+/* Erabiltzaileak (prototipoa: Erabiltzaileen kudeaketa) */
+.etiketa { display: inline-block; font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+.etiketa-admin { background: #111827; color: #fff; }
+.etiketa-arrunta { background: #e5e7eb; color: #374151; }
+.etiketa-zu { font-size: 12px; padding: 2px 8px; margin-left: 6px; background: #e5e7eb; color: #374151; }
+.itzuli { font-weight: 700; text-decoration: none; }
+.abatarra { width: 72px; height: 72px; border-radius: 50%; background: #b91c1c; color: #fff; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.datua-izena { color: #4b5563; font-size: 14px; font-weight: 600; }
+.datua-balioa { font-family: "Archivo", sans-serif; font-size: 24px; font-weight: 800; }
+.hutsik { border: 1px dashed #9ca3af; border-radius: 12px; background: #fff; color: #374151; font-weight: 600; }
+
+/* Ezabatzeko berrespen-leihoa */
+.ezabatu-leihoa { border: 1px solid #e7e5e4; border-radius: 16px; box-shadow: 0 20px 50px rgba(17, 24, 39, .25); overflow: hidden; }
+.ezabatu-ikonoa { width: 48px; height: 48px; border-radius: 50%; background: #fef2f2; color: #b91c1c; border: 1px solid #fca5a5; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.ezabatu-oina { background: #fafaf9; border-top: 1px solid #e7e5e4; gap: 8px; }
+.ezabatu-oina > * { margin: 0; }
+.modal-backdrop.show { opacity: .6; background: #111827; }

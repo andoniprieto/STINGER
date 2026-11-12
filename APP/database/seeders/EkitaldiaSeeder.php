@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Ekitaldia;
-use App\Models\Kategoria;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

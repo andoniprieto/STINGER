@@ -3,12 +3,12 @@
     Menua rolaren arabera aldatzen da:
       - Bisitaria (saioa hasi gabe): Ekitaldiak, Erregistratu, Saioa hasi
       - Erabiltzaile arrunta: Ekitaldiak, Nire sarrerak, izena + Saioa itxi
-      - Administratzailea: arruntarenak + Ekitaldien kudeaketa, Kategoriak, Erabiltzaileak
+      - Administratzailea: arruntarenak + Ekitaldien kudeaketa, Erabiltzaileak
     Mugikorrean menua botoi baten atzean ezkutatzen da (Bootstrap navbar).
 --}}
 @php
     $erabiltzailea = auth()->user();
-    $adminDa = $erabiltzailea && $erabiltzailea->rola === 'admin';
+    $adminDa = $erabiltzailea && $erabiltzailea->rola === \App\Enums\Rola::Admin;
 @endphp
 
 <header class="goiburu-nagusia sticky-top">
@@ -46,9 +46,6 @@
                 @if ($adminDa)
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('admin/ekitaldiak*') ? 'active' : '' }}" href="{{ url('/admin/ekitaldiak') }}">Ekitaldien kudeaketa</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('admin/kategoriak*') ? 'active' : '' }}" href="{{ url('/admin/kategoriak') }}">Kategoriak</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('admin/erabiltzaileak*') ? 'active' : '' }}" href="{{ url('/admin/erabiltzaileak') }}">Erabiltzaileak</a>

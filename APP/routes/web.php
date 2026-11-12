@@ -31,4 +31,3 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/web-erabiltzaileak.php';
-require __DIR__.'/web-kategoriak.php';
