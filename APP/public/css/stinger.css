@@ -1,0 +1,55 @@
+/* Bergarako Antzokia - estilo orokorrak (layout, header, footer eta kudeaketa) */
+body { background: #f5f5f4; font-family: "Source Sans 3", sans-serif; color: #111827; }
+h1, h2, .marka, .zenbakia { font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: -0.015em; }
+a { color: #b91c1c; }
+a:hover { color: #7f1d1d; }
+
+/* Header eta nabigazioa */
+.goiburu-nagusia { background: #111827; box-shadow: 0 2px 8px rgba(0, 0, 0, .18); }
+.goiburu-nagusia .marka { font-size: 20px; line-height: 1.05; }
+.goiburu-nagusia .azpititulua { font-size: 12px; color: #d1d5db; letter-spacing: .08em; }
+.goiburu-nagusia .nav-link { color: #e5e7eb; font-weight: 600; border-radius: 8px; padding: 10px 12px; }
+.goiburu-nagusia .nav-link:hover,
+.goiburu-nagusia .nav-link.active { color: #fff; background: rgba(255, 255, 255, .1); }
+.erabiltzailea { border-top: 1px solid #374151; }
+@media (min-width: 992px) {
+    .erabiltzailea { border-top: 0; border-left: 1px solid #374151; }
+}
+.erabiltzailea small { color: #d1d5db; }
+
+/* Footer */
+.oina { background: #111827; color: #d1d5db; font-size: 15px; }
+
+/* Botoiak eta txartelak (ekitaldiak.css-ren berdinak) */
+.orria { max-width: 1200px; }
+.txartela { background: #fff; border: 1px solid #e7e5e4; border-radius: 12px; }
+.gorria { color: #b91c1c; }
+.goiburua { font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+.btn-gorria { background: #b91c1c; color: #fff; border: 0; border-radius: 8px; font-weight: 700; padding: 10px 20px; }
+.btn-gorria:hover { background: #991b1b; color: #fff; }
+.btn-zuria { background: #fff; border: 1px solid #9ca3af; border-radius: 6px; font-weight: 600; color: #111827; }
+.btn-ezabatu { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 6px; font-weight: 600; color: #b91c1c; }
+.btn-ezabatu:hover { background: #fee2e2; color: #991b1b; }
+
+/* Taulak */
+.taula { border-radius: 12px; overflow: hidden; }
+.taula th { background: #fafaf9; font-size: 13px; font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: .08em; padding: 14px; }
+.taula td { padding: 14px; font-size: 15px; }
+
+/* Erabiltzaileak (prototipoa: Erabiltzaileen kudeaketa) */
+.etiketa { display: inline-block; font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+.etiketa-admin { background: #111827; color: #fff; }
+.etiketa-arrunta { background: #e5e7eb; color: #374151; }
+.etiketa-zu { font-size: 12px; padding: 2px 8px; margin-left: 6px; background: #e5e7eb; color: #374151; }
+.itzuli { font-weight: 700; text-decoration: none; }
+.abatarra { width: 72px; height: 72px; border-radius: 50%; background: #b91c1c; color: #fff; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.datua-izena { color: #4b5563; font-size: 14px; font-weight: 600; }
+.datua-balioa { font-family: "Archivo", sans-serif; font-size: 24px; font-weight: 800; }
+.hutsik { border: 1px dashed #9ca3af; border-radius: 12px; background: #fff; color: #374151; font-weight: 600; }
+
+/* Ezabatzeko berrespen-leihoa */
+.ezabatu-leihoa { border: 1px solid #e7e5e4; border-radius: 16px; box-shadow: 0 20px 50px rgba(17, 24, 39, .25); overflow: hidden; }
+.ezabatu-ikonoa { width: 48px; height: 48px; border-radius: 50%; background: #fef2f2; color: #b91c1c; border: 1px solid #fca5a5; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.ezabatu-oina { background: #fafaf9; border-top: 1px solid #e7e5e4; gap: 8px; }
+.ezabatu-oina > * { margin: 0; }
+.modal-backdrop.show { opacity: .6; background: #111827; }
