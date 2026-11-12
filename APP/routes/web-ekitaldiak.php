@@ -10,6 +10,8 @@ Route::get('/admin/ekitaldiak/create', [EkitaldiakController::class, 'create'])-
 Route::post('/admin/ekitaldiak', [EkitaldiakController::class, 'store'])->middleware(['auth', 'verified'])->name('front-end.admin.ekitaldiak.store');
 
 Route::get('/admin/ekitaldiak/{id}', [EkitaldiakController::class, 'show'])->middleware(['auth', 'verified'])->name('front-end.admin.ekitaldiak.show');
+Route::get('/ekitaldiak/{id}', [EkitaldiakController::class, 'show'])->middleware(['auth', 'verified'])->name('front-end.ekitaldiak.show');
+
 
 Route::get('/admin/ekitaldiak/{id}/edit', [EkitaldiakController::class, 'edit'])->middleware(['auth', 'verified'])->name('front-end.admin.ekitaldiak.edit');
 Route::put('/admin/ekitaldiak/{id}', [EkitaldiakController::class, 'update'])->middleware(['auth', 'verified'])->name('front-end.admin.ekitaldiak.update');

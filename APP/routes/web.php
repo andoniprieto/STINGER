@@ -5,15 +5,15 @@ use Illuminate\Support\Facades\Route;
 
 // Front-end (prototipoa, datu finkoekin)
 Route::view('/', 'front-end.home');
-Route::view('/ekitaldiak/{id}', 'front-end.detail');
+//Route::view('/ekitaldiak/{id}', 'front-end.detail');
 Route::view('/saioa-hasi', 'front-end.login');
 Route::view('/erregistratu', 'front-end.register');
 Route::view('/erosi', 'front-end.buy');
 Route::view('/erosita', 'front-end.done');
 Route::view('/sarrerak', 'front-end.tickets');
-Route::view('/admin/ekitaldiak', 'front-end.admin.ekitaldiak.index');
-Route::view('/admin/ekitaldiak/sortu', 'front-end.admin.ekitaldiak.create');
-Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit');
+//Route::view('/admin/ekitaldiak', 'front-end.admin.ekitaldiak.index');
+//Route::view('/admin/ekitaldiak/sortu', 'front-end.admin.ekitaldiak.create');
+//Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit');
 //Route::view('/admin/erabiltzaileak', 'front-end.admin.users');
 //Route::view('/admin/erabiltzaileak/sortu', 'front-end.admin.user-form');
 //Route::view('/admin/erabiltzaileak/{id}', 'front-end.admin.user-show');
