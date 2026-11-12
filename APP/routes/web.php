@@ -9,6 +9,7 @@ Route::view('/ekitaldiak/{id}', 'front-end.detail');
 Route::view('/erosi', 'front-end.buy');
 Route::view('/erosita', 'front-end.done');
 Route::view('/sarrerak', 'front-end.tickets');
+Route::view('/profila', 'front-end.profile')->name('front-end.profila');
 Route::view('/admin/ekitaldiak', 'front-end.admin.ekitaldiak.index');
 Route::view('/admin/ekitaldiak/sortu', 'front-end.admin.ekitaldiak.create');
 Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit');
