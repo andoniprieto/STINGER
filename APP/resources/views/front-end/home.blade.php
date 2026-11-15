@@ -1,31 +1,65 @@
 @extends('front-end.layout')
 @section('content')
+{{-- Orri printzipala (87-1258-zeregina---orri-printzipala adarretik) --}}
 @php
 $events = [
-    ['id' => 1, 'title' => 'Bertso saioa: udazkeneko jaialdia', 'category' => 'Bertsolaritza', 'date' => '2026/10/24', 'time' => '19:00', 'hall' => 'Areto nagusia', 'price' => 10, 'capacity' => 300, 'sold' => 212, 'status' => '88 leku libre'],
-    ['id' => 2, 'title' => 'Antzerkia: Etxeko giltzak', 'category' => 'Antzerkia', 'date' => '2026/10/31', 'time' => '20:00', 'hall' => 'Areto nagusia', 'price' => 14, 'capacity' => 300, 'sold' => 96, 'status' => '204 leku libre'],
-    ['id' => 3, 'title' => 'Jazz gaua: hirukote akustikoa', 'category' => 'Musika', 'date' => '2026/11/07', 'time' => '21:00', 'hall' => 'Areto txikia', 'price' => 12, 'capacity' => 120, 'sold' => 104, 'status' => 'Azken sarrerak'],
-    ['id' => 4, 'title' => 'Haurrentzako antzerkia: Ilargiaren bidaia', 'category' => 'Haurrak', 'date' => '2026/11/15', 'time' => '17:00', 'hall' => 'Areto nagusia', 'price' => 6, 'capacity' => 300, 'sold' => 140, 'status' => '160 leku libre'],
-    ['id' => 5, 'title' => 'Dantza garaikidea: Arnasa', 'category' => 'Dantza', 'date' => '2026/11/21', 'time' => '20:00', 'hall' => 'Areto nagusia', 'price' => 15, 'capacity' => 300, 'sold' => 58, 'status' => '242 leku libre'],
-    ['id' => 6, 'title' => 'Zinema forum: euskal film laburrak', 'category' => 'Zinema', 'date' => '2026/11/28', 'time' => '19:30', 'hall' => 'Areto txikia', 'price' => 5, 'capacity' => 120, 'sold' => 120, 'status' => 'Agortuta'],
+    ['id' => 1, 'title' => 'Bertso saioa: udazkeneko jaialdia', 'category' => 'Bertsolaritza', 'color' => '#9f1239', 'day' => '24', 'mon' => 'URR', 'longDate' => 'Urriak 24, larunbata', 'time' => '19:00', 'hall' => 'Areto nagusia', 'price' => 10, 'status' => '88 leku libre', 'badge' => 'badge-libre'],
+    ['id' => 2, 'title' => 'Antzerkia: Etxeko giltzak', 'category' => 'Antzerkia', 'color' => '#1e3a8a', 'day' => '31', 'mon' => 'URR', 'longDate' => 'Urriak 31, larunbata', 'time' => '20:00', 'hall' => 'Areto nagusia', 'price' => 14, 'status' => '204 leku libre', 'badge' => 'badge-libre'],
+    ['id' => 3, 'title' => 'Jazz gaua: hirukote akustikoa', 'category' => 'Musika', 'color' => '#9a3412', 'day' => '7', 'mon' => 'AZA', 'longDate' => 'Azaroak 7, larunbata', 'time' => '21:00', 'hall' => 'Areto txikia', 'price' => 12, 'status' => 'Azken sarrerak', 'badge' => 'badge-azken'],
+    ['id' => 4, 'title' => 'Haurrentzako antzerkia: Ilargiaren bidaia', 'category' => 'Haurrak', 'color' => '#166534', 'day' => '15', 'mon' => 'AZA', 'longDate' => 'Azaroak 15, igandea', 'time' => '17:00', 'hall' => 'Areto nagusia', 'price' => 6, 'status' => '160 leku libre', 'badge' => 'badge-libre'],
+    ['id' => 5, 'title' => 'Dantza garaikidea: Arnasa', 'category' => 'Dantza', 'color' => '#6b21a8', 'day' => '21', 'mon' => 'AZA', 'longDate' => 'Azaroak 21, larunbata', 'time' => '20:00', 'hall' => 'Areto nagusia', 'price' => 15, 'status' => '242 leku libre', 'badge' => 'badge-libre'],
+    ['id' => 6, 'title' => 'Zinema forum: euskal film laburrak', 'category' => 'Zinema', 'color' => '#334155', 'day' => '28', 'mon' => 'AZA', 'longDate' => 'Azaroak 28, larunbata', 'time' => '19:30', 'hall' => 'Areto txikia', 'price' => 5, 'status' => 'Agortuta', 'badge' => 'badge-agortuta'],
 ];
 @endphp
-<h2>Datozen ekitaldiak</h2>
-<form>
-    <input type="search" name="q" placeholder="Bilatu izenburua edo aretoa">
-    <select name="cat">
-        <option>Denak</option><option>Musika</option><option>Antzerkia</option><option>Bertsolaritza</option>
-        <option>Dantza</option><option>Haurrak</option><option>Zinema</option>
-    </select>
-    <button>Bilatu</button>
-</form>
-<p>{{ count($events) }} ekitaldi</p>
-<ul>
-@foreach ($events as $e)
-    <li>
-        <b>{{ $e['date'] }}</b> - <a href="/ekitaldiak/{{ $e['id'] }}">{{ $e['title'] }}</a>
-        ({{ $e['category'] }}) · {{ $e['time'] }} · {{ $e['hall'] }} · {{ $e['price'] }} € · {{ $e['status'] }}
-    </li>
-@endforeach
-</ul>
+
+<section class="hasiera-goiburua text-white py-5">
+    <div class="container py-3">
+        <p class="denboraldia text-uppercase fw-bold mb-3">Denboraldia 2026–27</p>
+        <h1 class="izenburua fw-bold mb-4">Bizi kultura Bergaran. Aukeratu ekitaldia eta erosi zure sarrera.</h1>
+
+        <label for="bilatu" class="form-label small fw-semibold">Bilatu ekitaldia</label>
+        <input type="search" id="bilatu" class="form-control form-control-lg bilatu mb-3 fs-6" placeholder="Izenburua edo aretoa…">
+
+        <button class="btn btn-light rounded-pill fw-semibold me-1 mb-2">Denak</button>
+        <button class="btn btn-outline-light kategoria rounded-pill fw-semibold me-1 mb-2">Musika</button>
+        <button class="btn btn-outline-light kategoria rounded-pill fw-semibold me-1 mb-2">Antzerkia</button>
+        <button class="btn btn-outline-light kategoria rounded-pill fw-semibold me-1 mb-2">Bertsolaritza</button>
+        <button class="btn btn-outline-light kategoria rounded-pill fw-semibold me-1 mb-2">Dantza</button>
+        <button class="btn btn-outline-light kategoria rounded-pill fw-semibold me-1 mb-2">Haurrak</button>
+        <button class="btn btn-outline-light kategoria rounded-pill fw-semibold me-1 mb-2">Zinema</button>
+    </div>
+</section>
+
+<section class="container py-4">
+    <div class="d-flex justify-content-between align-items-baseline mb-3">
+        <h2 class="fs-3 fw-bold m-0">Hurrengo ekitaldiak</h2>
+        <span class="text-secondary">{{ count($events) }} ekitaldi</span>
+    </div>
+
+    <div class="row g-4">
+        @foreach ($events as $e)
+            <div class="col-sm-6 col-lg-3">
+                <div class="card h-100 rounded-4 overflow-hidden">
+                    <div class="txartel-irudia position-relative d-flex flex-column align-items-center justify-content-center small fw-semibold" style="background: {{ $e['color'] }};">
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2"></circle><path d="M21 17l-5-5L5 20"></path></svg>
+                        Irudia
+                        <span class="kategoria-etiketa badge rounded-pill text-uppercase position-absolute top-0 start-0 m-3">{{ $e['category'] }}</span>
+                        <span class="eguna bg-white text-dark rounded-3 text-center lh-1 px-2 py-1 position-absolute top-0 end-0 m-2">
+                            <span class="zenbakia d-block fs-4 fw-bold">{{ $e['day'] }}</span><small class="fw-bold">{{ $e['mon'] }}</small>
+                        </span>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h3 class="fs-5 fw-bold">{{ $e['title'] }}</h3>
+                        <p class="text-secondary">{{ $e['longDate'] }} · {{ $e['time'] }}<br>{{ $e['hall'] }}</p>
+                        <div class="d-flex justify-content-between align-items-center mt-auto mb-3">
+                            <span class="fs-5 fw-bold">{{ $e['price'] }} €</span>
+                            <span class="badge rounded-pill {{ $e['badge'] }}">{{ $e['status'] }}</span>
+                        </div>
+                        <a href="{{ url('/ekitaldiak/' . $e['id']) }}" class="btn btn-outline-dark fw-semibold w-100">Xehetasunak ikusi</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</section>
 @endsection
