@@ -17,9 +17,8 @@ Route::view('/admin/ekitaldiak/sortu', 'front-end.admin.ekitaldiak.create');
 Route::view('/admin/ekitaldiak/{id}', 'front-end.admin.ekitaldiak.show')->whereNumber('id');
 Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit')->whereNumber('id');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Breeze-k saioa hasi/erregistratu ondoren 'dashboard'-era bidaltzen du: gure hasierara eraman
+Route::redirect('/dashboard', '/')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

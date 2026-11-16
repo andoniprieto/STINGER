@@ -1,14 +1,18 @@
 <!doctype html>
 <html lang="eu">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bergarako Antzokia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Source+Sans+3:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <link href="{{ asset('css/stinger.css') }}" rel="stylesheet">
     @stack('estiloak')
 </head>
+
 <body class="d-flex flex-column min-vh-100">
 
     @include('front-end.partials.header')
@@ -19,7 +23,7 @@
 
     @include('front-end.partials.footer')
 
-    {{-- Bootstrap JS: mugikorreko menua ireki eta ixteko behar da --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
