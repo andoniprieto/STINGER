@@ -3,6 +3,8 @@
     $e = $ekitaldia ?? [];
     $kategoriak = ['Musika', 'Antzerkia', 'Bertsolaritza', 'Dantza', 'Haurrak', 'Zinema'];
     $aretoak = ['Areto nagusia', 'Areto txikia'];
+    $koloreak = ['Musika' => '#9A3412', 'Antzerkia' => '#1E3A8A', 'Bertsolaritza' => '#9F1239', 'Dantza' => '#6B21A8', 'Haurrak' => '#166534', 'Zinema' => '#334155'];
+    $kategoriaHau = $e['kategoria'] ?? 'Musika';
 @endphp
 
 <div class="mb-3">
@@ -11,15 +13,15 @@
 </div>
 
 <div class="row g-3 mb-3">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <label for="kategoria" class="form-label small fw-semibold">Kategoria</label>
         <select id="kategoria" name="kategoria" class="form-select">
             @foreach ($kategoriak as $kategoria)
-                <option @selected(($e['kategoria'] ?? '') === $kategoria)>{{ $kategoria }}</option>
+                <option @selected($kategoriaHau === $kategoria)>{{ $kategoria }}</option>
             @endforeach
         </select>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <label for="aretoa" class="form-label small fw-semibold">Aretoa</label>
         <select id="aretoa" name="aretoa" class="form-select">
             @foreach ($aretoak as $aretoa)
@@ -27,35 +29,82 @@
             @endforeach
         </select>
     </div>
-    <div class="col-6">
+    <div class="col-sm-4">
         <label for="data" class="form-label small fw-semibold">Data</label>
         <input type="date" id="data" name="data" required class="form-control" value="{{ $e['data'] ?? '' }}">
     </div>
-    <div class="col-6">
+    <div class="col-sm-4">
         <label for="ordua" class="form-label small fw-semibold">Ordua</label>
         <input type="time" id="ordua" name="ordua" required class="form-control" value="{{ $e['ordua'] ?? '20:00' }}">
     </div>
-    <div class="col-6">
+    <div class="col-sm-4">
         <label for="prezioa" class="form-label small fw-semibold">Prezioa (€)</label>
         <input type="number" id="prezioa" name="prezioa" min="0" step="0.5" required class="form-control" value="{{ $e['prezioa'] ?? 10 }}">
     </div>
-    <div class="col-6">
-        <label for="edukiera" class="form-label small fw-semibold">Edukiera</label>
+    <div class="col-sm-4">
+        <label for="edukiera" class="form-label small fw-semibold">Edukiera (lekuak)</label>
         <input type="number" id="edukiera" name="edukiera" min="1" class="form-control" value="{{ $e['edukiera'] ?? 300 }}">
     </div>
 </div>
 
 <div class="mb-3">
-    <label for="deskribapena" class="form-label small fw-semibold">Deskribapena</label>
-    <textarea id="deskribapena" name="deskribapena" rows="4" maxlength="500" class="form-control">{{ $e['deskribapena'] ?? '' }}</textarea>
+    <label for="irudia" class="form-label small fw-semibold">Irudia</label>
+    <div class="d-flex flex-wrap align-items-center gap-3">
+        {{-- Aurrebista: irudirik ez badago, kategoriaren kolorea --}}
+        <div id="aurrebista" class="txartel-irudia d-flex flex-column align-items-center justify-content-center small fw-semibold" style="width: 200px; height: 120px; border-radius: 10px; overflow: hidden; background: {{ $koloreak[$kategoriaHau] }};">
+            {{-- Hasierako orriko txartelak irudirik ez duenean bezala --}}
+            <div id="irudirik-gabe" class="text-center">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2"></circle><path d="M21 17l-5-5L5 20"></path></svg>
+                <div>Irudia</div>
+            </div>
+            <img id="aurrebista-img" src="" alt="Aurrebista" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+        </div>
+        <div class="d-flex flex-column gap-2">
+            <input type="file" id="irudia" name="irudia" accept="image/*" class="form-control">
+            <span class="small text-secondary">JPG edo PNG. Irudirik gabe, kategoriaren kolorea erakutsiko da.</span>
+            <button type="button" id="irudia-kendu" class="btn btn-zuria btn-sm align-self-start" style="display: none;">Irudia kendu</button>
+        </div>
+    </div>
 </div>
 
 <div class="mb-4">
-    <label for="irudia" class="form-label small fw-semibold">Irudia</label>
-    <input type="file" id="irudia" name="irudia" accept="image/*" class="form-control">
+    <label for="deskribapena" class="form-label small fw-semibold">Deskribapena</label>
+    <textarea id="deskribapena" name="deskribapena" rows="4" maxlength="500" class="form-control">{{ $e['deskribapena'] ?? '' }}</textarea>
 </div>
 
 <div class="formulario-botoiak">
     <button type="submit" class="btn btn-gorria">Gorde</button>
     <a href="{{ url('/admin/ekitaldiak') }}" class="btn btn-zuria">Utzi</a>
 </div>
+
+<script>
+    var koloreak = @json($koloreak);
+    var irudia = document.getElementById('irudia');
+    var aurrebista = document.getElementById('aurrebista');
+    var aurrebistaImg = document.getElementById('aurrebista-img');
+    var kenduBotoia = document.getElementById('irudia-kendu');
+
+    // Irudia aukeratzean, aurrebistan erakutsi
+    irudia.addEventListener('change', function () {
+        if (irudia.files.length > 0) {
+            aurrebistaImg.src = URL.createObjectURL(irudia.files[0]);
+            aurrebistaImg.style.display = 'block';
+            kenduBotoia.style.display = 'block';
+            document.getElementById('irudirik-gabe').style.display = 'none';
+        }
+    });
+
+    // Irudia kendu
+    kenduBotoia.addEventListener('click', function () {
+        irudia.value = '';
+        aurrebistaImg.src = '';
+        aurrebistaImg.style.display = 'none';
+        kenduBotoia.style.display = 'none';
+        document.getElementById('irudirik-gabe').style.display = '';
+    });
+
+    // Kategoria aldatzean, aurrebistaren kolorea aldatu
+    document.getElementById('kategoria').addEventListener('change', function () {
+        aurrebista.style.background = koloreak[this.value];
+    });
+</script>

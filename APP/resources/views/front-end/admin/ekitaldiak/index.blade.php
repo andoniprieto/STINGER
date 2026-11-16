@@ -23,6 +23,10 @@
         <a href="{{ url('/admin/ekitaldiak/sortu') }}" class="btn btn-gorria botoi-nagusia">+ Ekitaldi berria</a>
     </div>
 
+    @if (session('success'))
+        <div class="alert alert-success" role="status">{{ session('success') }}</div>
+    @endif
+
     <div class="row g-2 g-md-3 mb-3 mb-md-4">
         <div class="col-4"><div class="txartela estatistika p-3"><div class="small fw-semibold text-secondary">Ekitaldiak</div><div class="zenbakia">{{ count($ekitaldiak) }}</div></div></div>
         <div class="col-4"><div class="txartela estatistika p-3"><div class="small fw-semibold text-secondary"><span class="d-none d-md-inline">Saldutako sarrerak</span><span class="d-md-none">Salduta</span></div><div class="zenbakia">{{ $salduta }}</div></div></div>
@@ -46,7 +50,7 @@
                     <a href="{{ url('/admin/ekitaldiak/'.$e['id'].'/editatu') }}" class="btn btn-zuria">Editatu</a>
                     <button type="button" class="btn btn-ezabatu"
                             data-bs-toggle="modal" data-bs-target="#ezabatuModala"
-                            data-id="{{ $e['id'] }}" data-izena="{{ $e['izenburua'] }}">Ezabatu</button>
+                            data-ekintza="{{ url('/admin/ekitaldiak/'.$e['id']) }}" data-izena="{{ $e['izenburua'] }}">Ezabatu</button>
                 </div>
             </article>
         @endforeach
@@ -81,7 +85,7 @@
                                 <a href="{{ url('/admin/ekitaldiak/'.$e['id'].'/editatu') }}" class="btn btn-zuria">Editatu</a>
                                 <button type="button" class="btn btn-ezabatu"
                                         data-bs-toggle="modal" data-bs-target="#ezabatuModala"
-                                        data-id="{{ $e['id'] }}" data-izena="{{ $e['izenburua'] }}">Ezabatu</button>
+                                        data-ekintza="{{ url('/admin/ekitaldiak/'.$e['id']) }}" data-izena="{{ $e['izenburua'] }}">Ezabatu</button>
                             </div>
                         </td>
                     </tr>
@@ -94,7 +98,7 @@
 
 </div>
 
-{{-- Ezabatzeko berrespen-leihoa (erabiltzaileen kudeaketaren estilo bera). Prototipoa: errenkada pantailatik kentzen du soilik. --}}
+{{-- Ezabatzeko berrespen-leihoa (erabiltzaileen kudeaketaren estilo bera). Prototipoa: ez du benetan ezabatzen, zerrendara itzultzen da. --}}
 <div class="modal fade" id="ezabatuModala" tabindex="-1" aria-labelledby="ezabatuIzenburua" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content ezabatu-leihoa">
@@ -118,29 +122,21 @@
             </div>
             <div class="modal-footer ezabatu-oina px-4 py-3">
                 <button type="button" class="btn btn-zuria px-3" data-bs-dismiss="modal">Utzi</button>
-                <button type="button" id="ezabatuBerretsi" class="btn btn-gorria" data-bs-dismiss="modal">Bai, ezabatu</button>
+                <form id="ezabatuFormularioa" method="POST" class="m-0">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-gorria w-100">Bai, ezabatu</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    let ezabatzekoId = null;
-
     document.getElementById('ezabatuModala').addEventListener('show.bs.modal', function (gertaera) {
         const botoia = gertaera.relatedTarget;
-        ezabatzekoId = botoia.dataset.id;
+        document.getElementById('ezabatuFormularioa').action = botoia.dataset.ekintza;
         document.getElementById('ezabatuIzena').textContent = botoia.dataset.izena;
-    });
-
-    document.getElementById('ezabatuBerretsi').addEventListener('click', function () {
-        document.querySelectorAll('[data-ekitaldia="' + ezabatzekoId + '"]').forEach(function (elementua) {
-            elementua.remove();
-        });
-        if (!document.querySelector('[data-ekitaldia]')) {
-            document.getElementById('hutsik').classList.remove('d-none');
-            document.querySelector('.taula')?.classList.add('d-none');
-        }
     });
 </script>
 @endsection

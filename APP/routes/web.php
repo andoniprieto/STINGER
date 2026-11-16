@@ -28,3 +28,14 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/web-erabiltzaileak.php';
+
+// Ekitaldien kudeaketa (prototipoa): oraindik ez da ezer gordetzen, zerrendara itzultzen da mezuarekin
+Route::post('/admin/ekitaldiak', function () {
+    return redirect('/admin/ekitaldiak')->with('success', 'Ekitaldia ongi gehitu da!');
+});
+Route::put('/admin/ekitaldiak/{id}', function () {
+    return redirect('/admin/ekitaldiak')->with('success', 'Ekitaldia ongi editatu da!');
+})->whereNumber('id');
+Route::delete('/admin/ekitaldiak/{id}', function () {
+    return redirect('/admin/ekitaldiak')->with('success', 'Ekitaldia ongi ezabatu da!');
+})->whereNumber('id');
