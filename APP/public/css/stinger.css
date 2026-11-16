@@ -220,3 +220,26 @@ a:hover { color: #7f1d1d; }
     .goiburu-nagusia .erabiltzailea small { font-size: 12px; white-space: nowrap; }
     .goiburu-nagusia .erabiltzailea .btn { white-space: nowrap; }
 }
+
+/* ===== Mugikorra: hasierako orria eta goiburua prototipoaren berdinak ===== */
+.goiburu-nagusia .pantaila { font-family: "Source Sans 3", sans-serif; font-size: 15px; font-weight: 600; color: #e5e7eb; letter-spacing: 0; }
+.hurrengoak { font-size: 1.75rem; }
+.txartel-mugikorra { background: #fff; border: 1px solid #e7e5e4; border-radius: 14px; overflow: hidden; color: #111827; text-decoration: none; }
+.txartel-mugikorra:hover { color: #111827; }
+.txartel-data { flex: 0 0 86px; line-height: 1; padding: 12px 0; }
+.txartel-data .zenbakia { font-size: 32px; }
+.txartel-data .hilabetea { font-size: 12px; font-weight: 700; letter-spacing: .14em; margin-top: 4px; }
+.txartel-data .ordua { font-size: 13px; font-weight: 600; margin-top: 8px; }
+.txartel-kategoria { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: #4b5563; }
+.txartel-izenburua { font-family: "Archivo", sans-serif; font-size: 17px; font-weight: 700; line-height: 1.2; }
+@media (max-width: 767.98px) {
+    .goiburu-nagusia .marka { font-size: 16px; white-space: nowrap; }
+    .goiburu-nagusia .navbar-brand img { width: 38px; height: 32px; }
+    .izenburua { font-size: 28px; line-height: 1.05; }
+    .denboraldia { font-size: 12px; }
+    .bilatu { border-radius: 999px; padding-left: 42px; }
+    .bilatu-ikonoa { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); }
+    .kategoriak { display: flex; overflow-x: auto; margin: 0 -12px; padding: 0 12px; }
+    .kategoriak .btn { flex: 0 0 auto; }
+    .hurrengoak { font-size: 20px; }
+}

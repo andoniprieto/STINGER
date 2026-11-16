@@ -31,8 +31,8 @@
         <h1 class="mb-2">Kaixo!</h1>
         <p class="text-secondary mb-4">Bisitari gisa ekitaldiak kontsulta ditzakezu. Sarrerak erosteko, hasi saioa edo sortu kontu bat.</p>
         <div class="formulario-botoiak flex-column">
-            <a href="{{ route('login') }}" class="btn btn-gorria">Saioa hasi</a>
-            <a href="{{ route('register') }}" class="btn btn-zuria">Kontua sortu</a>
+            <a href="{{ url('/saioa-hasi') }}" class="btn btn-gorria">Saioa hasi</a>
+            <a href="{{ url('/erregistratu') }}" class="btn btn-zuria">Kontua sortu</a>
         </div>
     @endauth
 

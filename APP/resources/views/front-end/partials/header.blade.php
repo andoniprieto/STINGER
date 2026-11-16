@@ -11,6 +11,35 @@
 @php
     $erabiltzailea = auth()->user();
     $adminDa = $erabiltzailea && $erabiltzailea->rola === \App\Enums\Rola::Admin;
+
+    // Mugikorrean goiburuan zein pantailatan zauden erakusteko (prototipoa)
+    if (request()->is('admin/ekitaldiak/sortu')) {
+        $pantaila = 'Ekitaldi berria';
+    } elseif (request()->is('admin/ekitaldiak/*/editatu')) {
+        $pantaila = 'Ekitaldia editatu';
+    } elseif (request()->is('admin/erabiltzaileak/create')) {
+        $pantaila = 'Erabiltzaile berria';
+    } elseif (request()->is('admin/erabiltzaileak/*/edit')) {
+        $pantaila = 'Erabiltzailea editatu';
+    } elseif (request()->is('admin*')) {
+        $pantaila = 'Kudeaketa';
+    } elseif (request()->is('ekitaldiak/*')) {
+        $pantaila = 'Ekitaldia';
+    } elseif (request()->is('saioa-hasi')) {
+        $pantaila = 'Saioa hasi';
+    } elseif (request()->is('erregistratu')) {
+        $pantaila = 'Erregistroa';
+    } elseif (request()->is('erosi')) {
+        $pantaila = 'Sarrerak erosi';
+    } elseif (request()->is('erosita')) {
+        $pantaila = 'Erosketa';
+    } elseif (request()->is('sarrerak')) {
+        $pantaila = 'Nire sarrerak';
+    } elseif (request()->is('profila')) {
+        $pantaila = 'Profila';
+    } else {
+        $pantaila = 'Ekitaldiak';
+    }
 @endphp
 
 <header class="goiburu-nagusia sticky-top">
@@ -21,8 +50,8 @@
         <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="{{ url('/') }}">
             <img src="{{ asset('img/logo.png') }}" alt="" width="47" height="40">
             <span class="d-flex flex-column">
-                <span class="marka">Bergarako Antzokia</span>
-                <span class="azpititulua text-uppercase">Ekitaldiak eta sarrerak</span>
+                <span class="marka">Bergarako Antzokia <span class="pantaila d-md-none"><span class="text-secondary mx-1">|</span>{{ $pantaila }}</span></span>
+                <span class="azpititulua text-uppercase d-none d-md-block">Ekitaldiak eta sarrerak</span>
             </span>
         </a>
 
