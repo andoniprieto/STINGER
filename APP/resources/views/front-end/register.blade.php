@@ -1,31 +1,52 @@
 @extends('front-end.layout')
+
+@push('estiloak')
+    <link href="{{ asset('css/saioa.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
-{{-- Erregistratu (89-1259-zeregina---saioa-hasi-eta-erregistratu adarretik) --}}
 <div class="px-3">
     <div class="saioa-card">
         <h1>Kontua sortu</h1>
         <p class="saioa-intro">Kontu batekin sarrerak erosi eta zure erosketak ikusi ahal izango dituzu.</p>
 
-        @if ($errors->any())
-            <div class="alert alert-danger">{{ $errors->first() }}</div>
-        @endif
-
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <div class="mb-3">
-                <label for="name" class="form-label small fw-semibold">Izen-abizenak</label>
-                <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" required>
+            <div class="row g-3 mb-3">
+                <div class="col-sm-6">
+                    <label for="name" class="form-label small fw-semibold">Izena</label>
+                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autofocus autocomplete="given-name">
+                    @error('name') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+                <div class="col-sm-6">
+                    <label for="abizena" class="form-label small fw-semibold">Abizena</label>
+                    <input type="text" id="abizena" name="abizena" class="form-control @error('abizena') is-invalid @enderror" value="{{ old('abizena') }}" required autocomplete="family-name">
+                    @error('abizena') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
             </div>
 
             <div class="mb-3">
                 <label for="email" class="form-label small fw-semibold">Posta elektronikoa</label>
-                <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email">
+                @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
 
             <div class="mb-3">
-                <label for="password" class="form-label small fw-semibold">Pasahitza (gutxienez 4 karaktere)</label>
-                <input type="password" id="password" name="password" class="form-control" minlength="4" required>
+                <label for="telefonoa" class="form-label small fw-semibold">Telefonoa</label>
+                <input type="tel" id="telefonoa" name="telefonoa" class="form-control @error('telefonoa') is-invalid @enderror" value="{{ old('telefonoa') }}" required minlength="9" maxlength="9" pattern="[0-9]{9}" autocomplete="tel">
+                @error('telefonoa') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label small fw-semibold">Pasahitza (gutxienez 8 karaktere)</label>
+                <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" minlength="8" required autocomplete="new-password">
+                @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            </div>
+
+            <div class="mb-3">
+                <label for="password_confirmation" class="form-label small fw-semibold">Pasahitza berretsi</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" minlength="8" required autocomplete="new-password">
             </div>
 
             <button type="submit" class="btn btn-danger w-100">Erregistratu</button>

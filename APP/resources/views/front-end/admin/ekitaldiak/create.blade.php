@@ -1,17 +1,16 @@
 @extends('front-end.layout')
 @section('content')
-<p><a href="/admin/ekitaldiak">&larr; Ekitaldiak</a></p>
-<h2>Ekitaldi berria / editatu</h2>
-<form action="/admin/ekitaldiak" method="get">
-    <p><label>Izenburua<br><input required></label></p>
-    <p><label>Kategoria<br><select><option>Musika</option><option>Antzerkia</option><option>Bertsolaritza</option><option>Dantza</option><option>Haurrak</option><option>Zinema</option></select></label></p>
-    <p><label>Data<br><input type="date" required></label></p>
-    <p><label>Ordua<br><input type="time" value="20:00"></label></p>
-    <p><label>Aretoa<br><select><option>Areto nagusia</option><option>Areto txikia</option></select></label></p>
-    <p><label>Prezioa (€)<br><input type="number" min="0" step="0.5" value="10"></label></p>
-    <p><label>Edukiera<br><input type="number" min="1" value="300"></label></p>
-    <p><label>Deskribapena<br><textarea rows="4" cols="50"></textarea></label></p>
-    <p><label>Irudia<br><input type="file" accept="image/*"></label></p>
-    <button>Gorde</button> <a href="/admin/ekitaldiak">Utzi</a>
-</form>
+<div class="container orria py-5" style="max-width: 720px;">
+
+    <p class="mb-3"><a href="{{ url('/admin/ekitaldiak') }}" class="itzuli">&larr; Ekitaldiak</a></p>
+    <h1 class="mb-4">Ekitaldi berria</h1>
+
+    {{-- Prototipoa: oraindik ez du daturik gordetzen --}}
+    <div class="txartela p-4">
+        <form action="{{ url('/admin/ekitaldiak') }}" method="get">
+            @include('front-end.admin.ekitaldiak.partials.form')
+        </form>
+    </div>
+
+</div>
 @endsection

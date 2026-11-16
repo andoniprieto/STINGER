@@ -16,7 +16,7 @@
             <span class="text-secondary fs-5">{{ $erabiltzailea->email }} · {{ $erabiltzailea->telefonoa }}</span>
             <span>@include('front-end.admin.erabiltzaileak.partials.rola', ['rola' => $erabiltzailea->rola])</span>
         </div>
-        <a href="{{ route('front-end.admin.erabiltzaileak.edit', $erabiltzailea->id) }}" class="btn btn-zuria">Editatu</a>
+        <a href="{{ route('front-end.admin.erabiltzaileak.edit', $erabiltzailea->id) }}" class="btn btn-zuria botoi-nagusia">Editatu</a>
     </div>
 
     <div class="row g-3 mb-4">
@@ -45,7 +45,26 @@
     @if ($sarrerak->isEmpty())
         <div class="hutsik p-4 text-center">Erabiltzaile honek ez du sarrerarik erosi oraindik.</div>
     @else
-        <div class="txartela taula table-responsive">
+        {{-- Mugikorra: erosketa bakoitza txartel batean --}}
+        <div class="d-flex flex-column gap-3 d-md-none">
+            @foreach ($sarrerak as $s)
+                <article class="txartela p-3">
+                    <div class="d-flex justify-content-between align-items-start gap-2 mb-1">
+                        <span class="fw-bold">{{ $s->ekitaldia?->izenburua ?? '—' }}</span>
+                        <span class="marka flex-shrink-0">{{ $s->kodigoa }}</span>
+                    </div>
+                    @if ($s->ekitaldia)
+                        <div class="small text-secondary">{{ $s->ekitaldia->data?->format('Y-m-d') }} · {{ $s->ekitaldia->ordua?->format('H:i') }}</div>
+                    @endif
+                    <div class="d-flex justify-content-between mt-2">
+                        <span>{{ $s->kopurua }} sarrera</span>
+                        <span class="fw-bold">{{ number_format((float) $s->prezio_totala, 2, ',', '.') }} €</span>
+                    </div>
+                </article>
+            @endforeach
+        </div>
+
+        <div class="txartela taula table-responsive d-none d-md-block">
             <table class="table align-middle mb-0">
                 <thead>
                     <tr>

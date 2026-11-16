@@ -4,7 +4,9 @@
       - Bisitaria (saioa hasi gabe): Ekitaldiak, Erregistratu, Saioa hasi
       - Erabiltzaile arrunta: Ekitaldiak, Nire sarrerak, izena + Saioa itxi
       - Administratzailea: arruntarenak + Ekitaldien kudeaketa, Erabiltzaileak
-    Mugikorrean menua botoi baten atzean ezkutatzen da (Bootstrap navbar).
+    Tableta eta ordenagailua (>= 768px): menu osoa.
+    Mugikorra (< 768px): goiko menurik ez; beheko barra erabiltzen da (partials/footer)
+    eta, saioa hasita, inizialen botoiak profilera eramaten du (Prototipoa_Mugikorra).
 --}}
 @php
     $erabiltzailea = auth()->user();
@@ -12,7 +14,7 @@
 @endphp
 
 <header class="goiburu-nagusia sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-dark py-2" aria-label="Nabigazio nagusia">
+    <nav class="navbar navbar-expand-md navbar-dark py-2" aria-label="Nabigazio nagusia">
       <div class="container">
 
         {{-- Logoa: hasierara eramaten du --}}
@@ -24,14 +26,16 @@
             </span>
         </a>
 
-        {{-- Mugikorreko botoia (☰) --}}
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menua"
-                aria-controls="menua" aria-expanded="false" aria-label="Menua ireki">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        {{-- Mugikorra: inizialak profilera (prototipoa) --}}
+        @auth
+            <a href="{{ url('/profila') }}" class="goiburu-inizialak d-md-none" aria-label="Nire profila">
+                {{ mb_strtoupper(mb_substr($erabiltzailea->name, 0, 1) . mb_substr($erabiltzailea->abizena ?? '', 0, 1)) }}
+            </a>
+        @endauth
 
-        <div class="collapse navbar-collapse" id="menua">
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-1 mt-3 mt-lg-0">
+
+        <div class="collapse navbar-collapse" id="menua">{{-- mugikorrean ezkutatuta (stinger.css) --}}
+            <ul class="navbar-nav ms-auto align-items-md-center gap-1 mt-3 mt-md-0">
 
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Ekitaldiak</a>
@@ -56,18 +60,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/erregistratu') }}">Erregistratu</a>
                     </li>
-                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                    <li class="nav-item ms-md-2 mt-2 mt-md-0">
                         <a class="btn btn-gorria w-100" href="{{ url('/saioa-hasi') }}">Saioa hasi</a>
                     </li>
                 @endguest
 
                 @auth
-                    <li class="nav-item erabiltzailea d-flex align-items-center justify-content-between gap-3 ms-lg-2 ps-lg-3 pt-3 pt-lg-0 mt-2 mt-lg-0">
-                        <span class="d-flex flex-column lh-sm text-white">
+                    <li class="nav-item erabiltzailea d-flex align-items-center justify-content-between gap-3 ms-md-2 ps-md-3 pt-3 pt-md-0 mt-2 mt-md-0">
+                        {{-- Tableta (768-1199px): tokia aurrezteko, inizialak bakarrik (profilean dago Saioa itxi) --}}
+                        <a href="{{ url('/profila') }}" class="goiburu-inizialak d-none d-md-flex d-xl-none" aria-label="Nire profila" title="{{ $erabiltzailea->name }}">
+                            {{ mb_strtoupper(mb_substr($erabiltzailea->name, 0, 1) . mb_substr($erabiltzailea->abizena ?? '', 0, 1)) }}
+                        </a>
+                        <span class="d-flex d-md-none d-xl-flex flex-column lh-sm text-white">
                             <strong>{{ $erabiltzailea->name }}</strong>
                             <small>{{ $adminDa ? 'Administratzailea' : 'Erabiltzaile arrunta' }}</small>
                         </span>
-                        <form method="POST" action="{{ route('logout') }}" class="m-0">
+                        <form method="POST" action="{{ route('logout') }}" class="m-0 d-md-none d-xl-block">
                             @csrf
                             <button type="submit" class="btn btn-outline-light btn-sm">Saioa itxi</button>
                         </form>

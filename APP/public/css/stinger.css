@@ -12,7 +12,7 @@ a:hover { color: #7f1d1d; }
 .goiburu-nagusia .nav-link:hover,
 .goiburu-nagusia .nav-link.active { color: #fff; background: rgba(255, 255, 255, .1); }
 .erabiltzailea { border-top: 1px solid #374151; }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
     .erabiltzailea { border-top: 0; border-left: 1px solid #374151; }
 }
 .erabiltzailea small { color: #d1d5db; }
@@ -147,4 +147,76 @@ a:hover { color: #7f1d1d; }
     .erosita-orria .btn-gorria, .erosita-orria .btn-zuria { width: 100%; border-radius: 12px; }
     .erosita-orria .btn-gorria { min-height: 52px; font-size: 18px; }
     .erosita-orria .btn-zuria { min-height: 48px; }
+}
+
+/* ===== Responsive (Prototipoa_Mugikorra) ===== */
+.min-w-0 { min-width: 0; }
+.taula.table-responsive { overflow-x: auto; }
+.mugikor-botoiak { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mugikor-botoiak .btn { min-height: 44px; border-radius: 12px; padding: 0 6px; display: flex; align-items: center; justify-content: center; }
+.formulario-botoiak { display: flex; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 575.98px) {
+    /* Botoi nagusiak eta formularioetakoak zabalera osoan, 48px-ko altuerarekin (hatzarekin sakatzeko) */
+    .botoi-nagusia { width: 100%; min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+    .formulario-botoiak { flex-direction: column; }
+    .formulario-botoiak .btn { width: 100%; min-height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .formulario-botoiak .btn-gorria { font-size: 17px; }
+    .orria h1 { font-size: 28px; }
+    .orria.py-5 { padding-top: 1.5rem !important; padding-bottom: 2rem !important; }
+    .txartela.p-4 { padding: 1.25rem !important; }
+    .abatarra { width: 56px; height: 56px; font-size: 20px; }
+    /* Ezabatu leihoa: botoiak bata bestearen azpian, "Bai, ezabatu" goian */
+    .ezabatu-oina { flex-direction: column-reverse; align-items: stretch; }
+    .ezabatu-oina .btn { width: 100%; min-height: 48px; border-radius: 12px; }
+}
+
+/* Bootstrap-ek :hover/:active-en ertza eta atzealdea gardena jartzen ditu; gure botoiek beren itxura mantendu dezaten */
+.btn-zuria:hover, .btn-zuria:focus-visible, .btn-zuria:active, .btn-zuria.active { background: #f5f5f4 !important; border-color: #6b7280 !important; color: #111827 !important; }
+.btn-gorria:focus-visible, .btn-gorria:active { background: #991b1b !important; border-color: #991b1b !important; color: #fff !important; }
+.btn-ezabatu:hover, .btn-ezabatu:focus-visible, .btn-ezabatu:active { background: #fee2e2 !important; border-color: #f87171 !important; color: #991b1b !important; }
+.btn-ezabatu:disabled { background: #fff; border-color: #d1d5db; color: #9ca3af; }
+
+/* ===== Mugikorreko beheko nabigazioa (Prototipoa_Mugikorra) ===== */
+.mugikor-nabigazioa {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 1030;
+    display: flex; background: #fff; border-top: 1px solid #e7e5e4;
+    padding: 6px 4px calc(10px + env(safe-area-inset-bottom));
+    box-shadow: 0 -2px 10px rgba(17, 24, 39, .06);
+}
+.mugikor-fitxa {
+    flex: 1; min-height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    color: #4b5563; font-size: 12px; font-weight: 700; text-decoration: none; border-radius: 10px;
+}
+.mugikor-fitxa:hover { color: #111827; }
+.mugikor-fitxa.aktiboa, .mugikor-fitxa.aktiboa:hover { color: #b91c1c; }
+.mugikor-fitxa:focus-visible { outline: 2px solid #b91c1c; outline-offset: -2px; }
+.abatarra-txikia { width: 56px; height: 56px; font-size: 20px; }
+.formulario-botoiak.flex-column .btn { width: 100%; min-height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+@media (max-width: 767.98px) {
+    /* Edukia barraren atzean ez geratzeko */
+    body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+
+/* ===== Mugikorrean goiko menua ezkutatu (beheko barra dago) ===== */
+.goiburu-inizialak {
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; background: #b91c1c; color: #fff;
+    font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; text-decoration: none; flex: 0 0 auto;
+}
+.goiburu-inizialak:hover, .goiburu-inizialak:focus-visible { color: #fff; background: #991b1b; }
+@media (max-width: 767.98px) {
+    .goiburu-nagusia .navbar-collapse { display: none !important; }
+}
+
+/* ===== Tableta (768-1199px): menu osoa, trinkoago, toki guztian sartzeko ===== */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .goiburu-nagusia .container { max-width: 100%; }
+    .goiburu-nagusia .navbar-brand img { width: 38px; height: 32px; }
+    .goiburu-nagusia .marka { font-size: 17px; }
+    .goiburu-nagusia .azpititulua { display: none; }
+    .goiburu-nagusia .nav-link { padding: 8px 8px; font-size: 15px; white-space: nowrap; }
+    .goiburu-nagusia .erabiltzailea { gap: 10px !important; padding-left: 10px !important; }
+    .goiburu-nagusia .erabiltzailea strong { font-size: 14px; white-space: nowrap; }
+    .goiburu-nagusia .erabiltzailea small { font-size: 12px; white-space: nowrap; }
+    .goiburu-nagusia .erabiltzailea .btn { white-space: nowrap; }
 }

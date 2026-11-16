@@ -1,0 +1,41 @@
+body { background: #f4f4f2; font-family: "Source Sans 3", sans-serif; color: #111827; }
+h1, .zenbakia { font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: -0.015em; }
+.orria { max-width: 1200px; }
+.txartela { background: #fff; border: 1px solid #e7e5e4; border-radius: 12px; }
+.gorria { color: #b91c1c; }
+.btn-gorria { background: #b91c1c; color: #fff; border: 0; border-radius: 8px; font-weight: 700; padding: 12px 20px; }
+.btn-gorria:hover { background: #991b1b; color: #fff; }
+.etiketa { font-size: 13px; font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Ekitaldia */
+.irudia { background: #9f1239; border-radius: 16px; min-height: 380px; color: rgba(255,255,255,.55); }
+.irudia .badge { background: rgba(17,24,39,.82); letter-spacing: .1em; font-size: 13px; }
+.barra { height: 10px; background: #e7e5e4; }
+.barra .progress-bar { background: #b91c1c; }
+.libre { background: #dcfce7; color: #166534; }
+.abisua { background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; color: #7f1d1d; }
+
+/* Kudeaketa */
+.goiburua { font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+.zenbakia { font-size: 32px; line-height: 1.1; }
+.taula { border-radius: 12px; overflow: hidden; }
+.taula th { background: #fafaf9; font-size: 13px; font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: .08em; padding: 14px; }
+.taula td { padding: 14px; font-size: 15px; }
+.taula small { color: #4b5563; }
+.puntua { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+.btn-zuria { background: #fff; border: 1px solid #9ca3af; border-radius: 6px; font-weight: 600; color: #111827; }
+.btn-ezabatu { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 6px; font-weight: 600; color: #b91c1c; }
+.btn-ezabatu:hover { background: #fee2e2; color: #991b1b; }
+
+/* Mugikorra */
+.fitxa { height: 44px; border-radius: 8px; border: 1px solid #9ca3af; background: #fff; color: #111827; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.fitxa.aktiboa { background: #111827; border-color: #111827; color: #fff; }
+@media (max-width: 767.98px) {
+    .orria { padding: 12px 16px 32px !important; }
+    .btn-berria { width: 100%; height: 52px; border-radius: 10px; font-size: 17px; }
+    .estatistika { padding: 10px !important; }
+    .estatistika .small { font-size: 12px; }
+    .estatistika .zenbakia { font-size: 22px; }
+    .ekitaldi-txartela small { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    .ekitaldi-txartela .btn { height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+}
