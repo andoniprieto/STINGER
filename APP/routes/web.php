@@ -10,8 +10,9 @@ Route::view('/erosi', 'front-end.buy');
 Route::view('/erosita', 'front-end.done');
 Route::view('/sarrerak', 'front-end.tickets');
 Route::view('/profila', 'front-end.profile')->name('front-end.profila');
-Route::view('/admin/ekitaldiak', 'front-end.admin.ekitaldiak.index');
+Route::view('/admin/ekitaldiak', 'front-end.admin.ekitaldiak.index')->name('ekitaldien.kudeaketa');
 Route::view('/admin/ekitaldiak/sortu', 'front-end.admin.ekitaldiak.create');
+Route::view('/admin/ekitaldiak/{id}', 'front-end.admin.ekitaldiak.show')->whereNumber('id');
 Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit');
 //Route::view('/admin/erabiltzaileak', 'front-end.admin.users');
 //Route::view('/admin/erabiltzaileak/sortu', 'front-end.admin.user-form');
@@ -21,7 +22,6 @@ Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit')
 Route::view('/orri-printzipala', 'Orri-printzipala')->name('orri-printzipala');
 
 Route::view('/ekitaldia', 'ekitaldia')->name('ekitaldia');
-Route::view('/admin/ekitaldiak', 'ekitaldien_kudeaketa')->name('ekitaldien.kudeaketa');
 
 Route::view('/sarrerak-erosi', 'Sarrerakerosi')->name('sarrerakerosi');
 
