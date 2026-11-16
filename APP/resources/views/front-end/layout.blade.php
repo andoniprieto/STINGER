@@ -17,6 +17,13 @@
 
     @include('front-end.partials.header')
 
+    @if (session('mezua'))
+        <div class="alert alert-success alert-dismissible fade show rounded-0 mb-0 fw-semibold" role="status">
+            <div class="container">{{ session('mezua') }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Mezua itxi"></button>
+        </div>
+    @endif
+
     <main class="flex-grow-1">
         @yield('content')
     </main>

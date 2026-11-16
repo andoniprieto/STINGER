@@ -1,8 +1,8 @@
 {{--
     Header eta nabigazioa.
     Menua rolaren arabera aldatzen da:
-      - Bisitaria (saioa hasi gabe): Ekitaldiak, Erregistratu, Saioa hasi
-      - Erabiltzaile arrunta: Ekitaldiak, Nire sarrerak, izena + Saioa itxi
+      - Bisitaria (saioa hasi gabe): Erregistratu, Saioa hasi
+      - Erabiltzaile arrunta: Nire sarrerak, izena + Saioa itxi
       - Administratzailea: arruntarenak + Ekitaldien kudeaketa, Erabiltzaileak
     Tableta eta ordenagailua (>= 768px): menu osoa.
     Mugikorra (< 768px): goiko menurik ez; beheko barra erabiltzen da (partials/footer)
@@ -36,10 +36,6 @@
 
         <div class="collapse navbar-collapse" id="menua">{{-- mugikorrean ezkutatuta (stinger.css) --}}
             <ul class="navbar-nav ms-auto align-items-md-center gap-1 mt-3 mt-md-0">
-
-                <li class="nav-item">
-                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Ekitaldiak</a>
-                </li>
 
                 @auth
                     <li class="nav-item">
@@ -77,7 +73,13 @@
                         </span>
                         <form method="POST" action="{{ route('logout') }}" class="m-0 d-md-none d-xl-block">
                             @csrf
-                            <button type="submit" class="btn btn-outline-light btn-sm">Saioa itxi</button>
+                            <button type="submit" class="btn btn-link text-white p-1" title="Saioa itxi">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                                    <polyline points="16 17 21 12 16 7"/>
+                                    <line x1="21" y1="12" x2="9" y2="12"/>
+                                </svg>
+                            </button>
                         </form>
                     </li>
                 @endauth
