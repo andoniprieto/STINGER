@@ -243,3 +243,8 @@ a:hover { color: #7f1d1d; }
     .kategoriak .btn { flex: 0 0 auto; }
     .hurrengoak { font-size: 20px; }
 }
+
+/* Ekitaldiaren xehetasuna: mugikorrean "Sarrerak erosi" botoi handia (prototipoa) */
+@media (max-width: 767.98px) {
+    .erosi-botoia { align-self: stretch !important; min-height: 52px; border-radius: 12px; font-size: 17px; display: flex; align-items: center; justify-content: center; }
+}

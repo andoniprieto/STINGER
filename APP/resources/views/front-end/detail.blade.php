@@ -34,7 +34,7 @@
             </div>
 
             @auth
-                <a href="{{ url('/erosi') }}" class="btn btn-gorria align-self-start">Sarrerak erosi</a>
+                <a href="{{ url('/erosi') }}" class="btn btn-gorria align-self-start erosi-botoia">Sarrerak erosi</a>
             @else
                 <div class="abisua d-flex flex-wrap align-items-center gap-3 p-3">
                     <span class="flex-grow-1 fw-semibold">Sarrerak erosteko saioa hasi behar duzu.</span>
