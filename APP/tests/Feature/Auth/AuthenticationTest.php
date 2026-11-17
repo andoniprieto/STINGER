@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Rola;
 use App\Models\User;
 
 test('login screen can be rendered', function () {
@@ -38,4 +39,31 @@ test('users can logout', function () {
 
     $this->assertGuest();
     $response->assertRedirect('/');
+});
+
+test('administrators can access user management from the dashboard', function () {
+    $admin = User::factory()->create(['rola' => Rola::Admin]);
+
+    $this->actingAs($admin)
+        ->get('/dashboard')
+        ->assertOk()
+        ->assertSee(route('front-end.admin.erabiltzaileak.index'));
+});
+
+test('regular users do not see administrator management links on the dashboard', function () {
+    $user = User::factory()->create();
+
+    $this->actingAs($user)
+        ->get('/dashboard')
+        ->assertOk()
+        ->assertDontSee(route('front-end.admin.erabiltzaileak.index'));
+});
+
+test('administrators see user management in the front-end navigation', function () {
+    $admin = User::factory()->create(['rola' => Rola::Admin]);
+
+    $this->actingAs($admin)
+        ->get('/')
+        ->assertOk()
+        ->assertSee('href="'.url('/admin/erabiltzaileak').'"', false);
 });
