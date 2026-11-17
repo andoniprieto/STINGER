@@ -35,13 +35,23 @@
             'guztira' => $dirua($t['guztira']),
         ];
     }, array_reverse($erositakoak));
+
+    // Saioa hasi gabe ez da sarrerarik erakusten (prototipoa)
+    if (! auth()->check()) {
+        $sarrerak = [];
+    }
 @endphp
 
 {{-- ORDENAGAILUA eta TABLETA --}}
 <section class="d-none d-md-flex flex-column" style="max-width: 900px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 32px) 64px; gap: 20px">
     <h1 class="m-0" style="font-size: clamp(28px, 4vw, 38px)">Nire sarrerak</h1>
 
-    @if (empty($sarrerak))
+    @guest
+        <div class="text-center" style="background: #fff; border: 1px dashed #9CA3AF; border-radius: 12px; padding: 40px 24px">
+            <p class="fw-bold" style="margin: 0 0 14px; font-size: 18px">Hasi saioa zure sarrerak ikusteko.</p>
+            <a href="{{ url('/saioa-hasi') }}" class="btn btn-gorria">Saioa hasi</a>
+        </div>
+    @elseif (empty($sarrerak))
         <div class="text-center" style="background: #fff; border: 1px dashed #9CA3AF; border-radius: 12px; padding: 40px 24px">
             <p class="fw-bold" style="margin: 0 0 14px; font-size: 18px">Oraindik ez duzu sarrerarik erosi.</p>
             <a href="{{ url('/') }}" class="btn btn-gorria">Ekitaldiak ikusi</a>
@@ -69,7 +79,12 @@
 
 {{-- MUGIKORRA --}}
 <section class="d-flex d-md-none flex-column" style="padding: 20px 16px 24px; gap: 14px">
-    @if (empty($sarrerak))
+    @guest
+        <div class="d-flex flex-column text-center" style="background: #fff; border: 1px dashed #9CA3AF; border-radius: 14px; padding: 28px 18px; gap: 12px">
+            <p class="m-0 fw-bold">Hasi saioa zure sarrerak ikusteko.</p>
+            <a href="{{ url('/saioa-hasi') }}" class="btn btn-gorria">Saioa hasi</a>
+        </div>
+    @elseif (empty($sarrerak))
         <div class="d-flex flex-column text-center" style="background: #fff; border: 1px dashed #9CA3AF; border-radius: 14px; padding: 28px 18px; gap: 12px">
             <p class="m-0 fw-bold">Oraindik ez duzu sarrerarik erosi.</p>
             <a href="{{ url('/') }}" class="btn btn-gorria">Ekitaldiak ikusi</a>
