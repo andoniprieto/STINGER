@@ -256,3 +256,11 @@ a:hover { color: #7f1d1d; }
 /* Profila (prototipoa) */
 .profil-rola { align-self: flex-start; font-size: 12px; font-weight: 700; background: #f3f4f6; color: #374151; padding: 3px 10px; border-radius: 999px; }
 .saioa-itxi-botoia, .saioa-itxi-botoia:hover { color: #991b1b; border-color: #fca5a5; }
+
+/* Ekitaldiaren xehetasuna mugikorrean (prototipoa) */
+.atzera-gezia { min-height: 44px; }
+.atzera-gezia .marka { font-size: 19px; }
+.kategoria-pilula { color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .1em; padding: 5px 12px; border-radius: 999px; }
+@media (max-width: 767.98px) {
+    .ekitaldi-irudia { min-height: 210px; border-radius: 14px; }
+}

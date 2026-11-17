@@ -2,15 +2,22 @@
 @section('content')
 {{-- Ekitaldiaren xehetasuna (83-1257-zeregina---ekitaldeen-kudeaketa-front-end adarretik) --}}
 <div class="container orria py-4">
-    <a href="{{ url('/') }}" class="d-inline-flex align-items-center gap-1 gorria fw-bold text-decoration-none mb-3">
+    {{-- Mugikorrean goiburuko geziarekin itzultzen da --}}
+    <a href="{{ url('/') }}" class="d-none d-md-inline-flex align-items-center gap-1 gorria fw-bold text-decoration-none mb-3">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
         Ekitaldi guztiak
     </a>
 
+    {{-- Mugikorra: kategoria koloretan eta data (prototipoa) --}}
+    <div class="d-flex d-md-none justify-content-between align-items-center mb-3">
+        <span class="kategoria-pilula text-uppercase" style="background: #9f1239;">Bertsolaritza</span>
+        <span class="fw-bold text-secondary">Urriak 24, larunbata</span>
+    </div>
+
     <div class="row g-4">
         <div class="col-lg-5">
             <div class="ekitaldi-irudia position-relative d-flex flex-column align-items-center justify-content-center gap-2 fw-semibold">
-                <span class="badge rounded-pill text-uppercase position-absolute top-0 start-0 m-3 px-3 py-2">Bertsolaritza</span>
+                <span class="badge rounded-pill text-uppercase position-absolute top-0 start-0 m-3 px-3 py-2 d-none d-md-inline-block">Bertsolaritza</span>
                 <svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><circle cx="9" cy="10" r="2"></circle><path d="M21 17l-5-5L5 20"></path></svg>
                 Ekitaldiaren irudia
             </div>
