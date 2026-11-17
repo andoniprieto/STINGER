@@ -1,0 +1,266 @@
+/* Bergarako Antzokia - estilo orokorrak (layout, header, footer eta kudeaketa) */
+body { background: #f5f5f4; font-family: "Source Sans 3", sans-serif; color: #111827; }
+h1, h2, .marka, .zenbakia { font-family: "Archivo", sans-serif; font-weight: 800; letter-spacing: -0.015em; }
+a { color: #b91c1c; }
+a:hover { color: #7f1d1d; }
+
+/* Header eta nabigazioa */
+.goiburu-nagusia { background: #111827; box-shadow: 0 2px 8px rgba(0, 0, 0, .18); }
+.goiburu-nagusia .marka { font-size: 20px; line-height: 1.05; }
+.goiburu-nagusia .azpititulua { font-size: 12px; color: #d1d5db; letter-spacing: .08em; }
+.goiburu-nagusia .nav-link { color: #e5e7eb; font-weight: 600; border-radius: 8px; padding: 10px 12px; }
+.goiburu-nagusia .nav-link:hover,
+.goiburu-nagusia .nav-link.active { color: #fff; background: rgba(255, 255, 255, .1); }
+.erabiltzailea { border-top: 1px solid #374151; }
+@media (min-width: 768px) {
+    .erabiltzailea { border-top: 0; border-left: 1px solid #374151; }
+}
+.erabiltzailea small { color: #d1d5db; }
+
+/* Footer */
+.oina { background: #111827; color: #d1d5db; font-size: 15px; }
+
+/* Botoiak eta txartelak (ekitaldiak.css-ren berdinak) */
+.orria { max-width: 1200px; }
+.txartela { background: #fff; border: 1px solid #e7e5e4; border-radius: 12px; }
+.gorria { color: #b91c1c; }
+.goiburua { font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+.btn-gorria { background: #b91c1c; color: #fff; border: 0; border-radius: 8px; font-weight: 700; padding: 10px 20px; }
+.btn-gorria:hover { background: #991b1b; color: #fff; }
+.btn-zuria { background: #fff; border: 1px solid #9ca3af; border-radius: 6px; font-weight: 600; color: #111827; }
+.btn-ezabatu { background: #fef2f2; border: 1px solid #fca5a5; border-radius: 6px; font-weight: 600; color: #b91c1c; }
+.btn-ezabatu:hover { background: #fee2e2; color: #991b1b; }
+
+/* Taulak */
+.taula { border-radius: 12px; overflow: hidden; }
+.taula th { background: #fafaf9; font-size: 13px; font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: .08em; padding: 14px; }
+.taula td { padding: 14px; font-size: 15px; }
+
+/* Erabiltzaileak (prototipoa: Erabiltzaileen kudeaketa) */
+.etiketa { display: inline-block; font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+.etiketa-admin { background: #111827; color: #fff; }
+.etiketa-arrunta { background: #e5e7eb; color: #374151; }
+.etiketa-zu { font-size: 12px; padding: 2px 8px; margin-left: 6px; background: #e5e7eb; color: #374151; }
+.itzuli { font-weight: 700; text-decoration: none; }
+.abatarra { width: 72px; height: 72px; border-radius: 50%; background: #b91c1c; color: #fff; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 26px; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.datua-izena { color: #4b5563; font-size: 14px; font-weight: 600; }
+.datua-balioa { font-family: "Archivo", sans-serif; font-size: 24px; font-weight: 800; }
+.hutsik { border: 1px dashed #9ca3af; border-radius: 12px; background: #fff; color: #374151; font-weight: 600; }
+
+/* Ezabatzeko berrespen-leihoa */
+.ezabatu-leihoa { border: 1px solid #e7e5e4; border-radius: 16px; box-shadow: 0 20px 50px rgba(17, 24, 39, .25); overflow: hidden; }
+.ezabatu-ikonoa { width: 48px; height: 48px; border-radius: 50%; background: #fef2f2; color: #b91c1c; border: 1px solid #fca5a5; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+.ezabatu-oina { background: #fafaf9; border-top: 1px solid #e7e5e4; gap: 8px; }
+.ezabatu-oina > * { margin: 0; }
+.modal-backdrop.show { opacity: .6; background: #111827; }
+
+/* ===== Orri printzipala (87 adarretik) ===== */
+.hasiera-goiburua { background: #1f2937; }
+.hasiera-goiburua h1, .card h3, .zenbakia { font-family: "Archivo", sans-serif; }
+.denboraldia { color: #fca5a5; font-size: 13px; letter-spacing: .14em; }
+.izenburua { font-size: clamp(34px, 5vw, 56px); line-height: 1.02; letter-spacing: -.02em; max-width: 780px; }
+.bilatu { max-width: 520px; }
+.kategoria { border-color: #6b7280; }
+.txartel-irudia { height: 190px; color: rgba(255, 255, 255, .55); }
+.kategoria-etiketa { background: rgba(17, 24, 39, .82); letter-spacing: .1em; }
+.eguna { min-width: 44px; }
+.badge-libre { background: #dcfce7; color: #166534; }
+.badge-azken { background: #fef3c7; color: #92400e; }
+.badge-agortuta { background: #e5e7eb; color: #374151; }
+
+/* ===== Ekitaldiaren xehetasuna (83 adarretik) ===== */
+.datu-etiketa { font-size: 13px; font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: 0.06em; }
+.ekitaldi-irudia { background: #9f1239; border-radius: 16px; min-height: 380px; color: rgba(255,255,255,.55); }
+.ekitaldi-irudia .badge { background: rgba(17,24,39,.82); letter-spacing: .1em; font-size: 13px; }
+.barra { height: 10px; background: #e7e5e4; }
+.barra .progress-bar { background: #b91c1c; }
+.libre { background: #dcfce7; color: #166534; }
+.abisua { background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; color: #7f1d1d; }
+
+/* ===== Ekitaldien kudeaketa (83 adarretik) ===== */
+.estatistika .zenbakia { font-size: 32px; line-height: 1.1; }
+.taula small { color: #4b5563; }
+.puntua { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+.fitxa { height: 44px; border-radius: 8px; border: 1px solid #9ca3af; background: #fff; color: #111827; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.fitxa.aktiboa { background: #111827; border-color: #111827; color: #fff; }
+@media (max-width: 767.98px) {
+    .kudeaketa.orria { padding: 12px 16px 32px !important; }
+    .kudeaketa .btn-berria { width: 100%; height: 52px; border-radius: 10px; font-size: 17px; }
+    .estatistika { padding: 10px !important; }
+    .estatistika .small { font-size: 12px; }
+    .estatistika .zenbakia { font-size: 22px; }
+    .ekitaldi-txartela small { font-size: 14px; color: #4b5563; line-height: 1.6; }
+    .ekitaldi-txartela .btn { height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+}
+
+/* ===== Saioa hasi / Erregistratu (89 adarretik) ===== */
+.saioa-card { max-width: 558px; margin: 28px auto; background: #fff; border: 1px solid #e5e5e3; border-radius: 16px; padding: 30px 32px 36px; color: #374151; }
+.saioa-card h1 { font-family: "Archivo", sans-serif; font-weight: 800; font-size: 32px; color: #111827; margin-bottom: 14px; }
+.saioa-card p { font-size: 16px; color: #4b5563; }
+.saioa-card .form-label { font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 6px; }
+.saioa-card .form-control { height: 44px; border: 1px solid #9ca3af; border-radius: 8px; }
+.saioa-card .mb-3 { margin-bottom: 14px !important; }
+.saioa-card .btn-danger { height: 44px; background: #b91c1c; border-color: #b91c1c; border-radius: 6px; font-weight: 700; font-size: 15px; }
+.saioa-card a { color: #b91c1c; font-weight: 700; }
+.saioa-intro { margin: 20px 0 12px; }
+@media (max-width: 575.98px) {
+    .saioa-card { margin: 0 -16px; border: 0; border-radius: 0; background: transparent; padding: 22px 16px 32px; }
+    .saioa-card h1 { font-size: 28px; margin-bottom: 12px; }
+    .saioa-card p { font-size: 17px; line-height: 1.4; }
+    .saioa-intro { margin: 18px 0 14px; }
+    .saioa-card .form-label { font-size: 15px; margin-bottom: 6px; }
+    .saioa-card .form-control { height: 48px; border-radius: 10px; }
+    .saioa-card .mb-3 { margin-bottom: 16px !important; }
+    .saioa-card .btn-danger { height: 52px; border-radius: 10px; font-size: 18px; }
+    .saioa-btn-bigarren { margin-top: 16px; height: 48px; display: flex; align-items: center; justify-content: center;
+        background: #fff; border: 1px solid #9ca3af; border-radius: 10px; color: #111827 !important; font-weight: 600 !important; font-size: 16px; }
+}
+
+/* ===== Sarrerak erosi (91 adarretik) ===== */
+.erosi-orria h1, .erosi-orria .ekitaldia { font-family: "Archivo", sans-serif; }
+.erosi-orria h2 { font-size: 20px; }
+.erosi-orria .arrosa { color: #fca5a5; letter-spacing: .12em; font-size: 13px; }
+.erosi-orria .gris { color: #d1d5db; }
+.erosi-orria .txartela { border-color: #e7e5e4; }
+.erosi-orria .laburpena { background: #111827; }
+.erosi-orria .kopurua { border: 1px solid #9ca3af; border-radius: 10px; overflow: hidden; }
+.erosi-orria .kopurua button { width: 48px; height: 48px; border: 0; background: #f3f4f6; font-size: 22px; font-weight: 700; }
+.erosi-orria .kopurua span { width: 56px; text-align: center; font-size: 22px; font-weight: 700; }
+.erosi-orria .form-label { font-size: 14px; font-weight: 600; color: #374151; }
+.erosi-orria .form-control { height: 44px; border-color: #9ca3af; border-radius: 8px; }
+.erosi-orria .form-control:focus { border-color: #b91c1c; box-shadow: 0 0 0 .2rem #fecaca; }
+.btn-ordaindu { background: #b91c1c; color: #fff; min-height: 52px; border-radius: 8px; font-size: 17px; }
+.btn-ordaindu:hover { background: #991b1b; color: #fff; }
+
+/* ===== Erosketa eginda (91 adarretik) ===== */
+.erosita-orria h1, .erosita-orria .kodea { font-family: "Archivo", sans-serif; }
+.erosita-orria .testua { color: #374151; }
+.erosita-orria .ikonoa { width: 56px; height: 56px; background: #dcfce7; color: #166534; }
+.erosita-orria .sarrera { border: 2px dashed #9ca3af; }
+.erosita-orria .datu-etiketa { font-size: 12px; letter-spacing: .08em; }
+.erosita-orria .kodea { letter-spacing: .08em; }
+.erosita-orria .btn-gorria { border-radius: 8px; }
+.erosita-orria .btn-zuria { border-radius: 8px; }
+.erosita-orria .btn-zuria:hover { background: #f3f4f6; }
+@media (max-width: 767.98px) {
+    .eginda-txartela { background: transparent !important; border: 0 !important; }
+    .erosita-orria .btn-gorria, .erosita-orria .btn-zuria { width: 100%; border-radius: 12px; }
+    .erosita-orria .btn-gorria { min-height: 52px; font-size: 18px; }
+    .erosita-orria .btn-zuria { min-height: 48px; }
+}
+
+/* ===== Responsive (Prototipoa_Mugikorra) ===== */
+.min-w-0 { min-width: 0; }
+.taula.table-responsive { overflow-x: auto; }
+.mugikor-botoiak { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mugikor-botoiak .btn { min-height: 44px; border-radius: 12px; padding: 0 6px; display: flex; align-items: center; justify-content: center; }
+.formulario-botoiak { display: flex; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 575.98px) {
+    /* Botoi nagusiak eta formularioetakoak zabalera osoan, 48px-ko altuerarekin (hatzarekin sakatzeko) */
+    .botoi-nagusia { width: 100%; min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+    .formulario-botoiak { flex-direction: column; }
+    .formulario-botoiak .btn { width: 100%; min-height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+    .formulario-botoiak .btn-gorria { font-size: 17px; }
+    .orria h1 { font-size: 28px; }
+    .orria.py-5 { padding-top: 1.5rem !important; padding-bottom: 2rem !important; }
+    .txartela.p-4 { padding: 1.25rem !important; }
+    .abatarra { width: 56px; height: 56px; font-size: 20px; }
+    /* Ezabatu leihoa: botoiak bata bestearen azpian, "Bai, ezabatu" goian */
+    .ezabatu-oina { flex-direction: column-reverse; align-items: stretch; }
+    .ezabatu-oina .btn { width: 100%; min-height: 48px; border-radius: 12px; }
+}
+
+/* Bootstrap-ek :hover/:active-en ertza eta atzealdea gardena jartzen ditu; gure botoiek beren itxura mantendu dezaten */
+.btn-zuria:hover, .btn-zuria:focus-visible, .btn-zuria:active, .btn-zuria.active { background: #f5f5f4 !important; border-color: #6b7280 !important; color: #111827 !important; }
+.btn-gorria:focus-visible, .btn-gorria:active { background: #991b1b !important; border-color: #991b1b !important; color: #fff !important; }
+.btn-ezabatu:hover, .btn-ezabatu:focus-visible, .btn-ezabatu:active { background: #fee2e2 !important; border-color: #f87171 !important; color: #991b1b !important; }
+.btn-ezabatu:disabled { background: #fff; border-color: #d1d5db; color: #9ca3af; }
+
+/* ===== Mugikorreko beheko nabigazioa (Prototipoa_Mugikorra) ===== */
+.mugikor-nabigazioa {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 1030;
+    display: flex; background: #fff; border-top: 1px solid #e7e5e4;
+    padding: 6px 4px calc(10px + env(safe-area-inset-bottom));
+    box-shadow: 0 -2px 10px rgba(17, 24, 39, .06);
+}
+.mugikor-fitxa {
+    flex: 1; min-height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    color: #4b5563; font-size: 12px; font-weight: 700; text-decoration: none; border-radius: 10px;
+}
+.mugikor-fitxa:hover { color: #111827; }
+.mugikor-fitxa.aktiboa, .mugikor-fitxa.aktiboa:hover { color: #b91c1c; }
+.mugikor-fitxa:focus-visible { outline: 2px solid #b91c1c; outline-offset: -2px; }
+.abatarra-txikia { width: 56px; height: 56px; font-size: 20px; }
+.formulario-botoiak.flex-column .btn { width: 100%; min-height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+@media (max-width: 767.98px) {
+    /* Edukia barraren atzean ez geratzeko */
+    body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+}
+
+/* ===== Mugikorrean goiko menua ezkutatu (beheko barra dago) ===== */
+.goiburu-inizialak {
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; background: #b91c1c; color: #fff;
+    font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; text-decoration: none; flex: 0 0 auto;
+}
+.goiburu-inizialak:hover, .goiburu-inizialak:focus-visible { color: #fff; background: #991b1b; }
+@media (max-width: 767.98px) {
+    .goiburu-nagusia .navbar-collapse { display: none !important; }
+}
+
+/* ===== Tableta (768-1199px): menu osoa, trinkoago, toki guztian sartzeko ===== */
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .goiburu-nagusia .container { max-width: 100%; }
+    .goiburu-nagusia .navbar-brand img { width: 38px; height: 32px; }
+    .goiburu-nagusia .marka { font-size: 17px; }
+    .goiburu-nagusia .azpititulua { display: none; }
+    .goiburu-nagusia .nav-link { padding: 8px 8px; font-size: 15px; white-space: nowrap; }
+    .goiburu-nagusia .erabiltzailea { gap: 10px !important; padding-left: 10px !important; }
+    .goiburu-nagusia .erabiltzailea strong { font-size: 14px; white-space: nowrap; }
+    .goiburu-nagusia .erabiltzailea small { font-size: 12px; white-space: nowrap; }
+    .goiburu-nagusia .erabiltzailea .btn { white-space: nowrap; }
+}
+
+/* ===== Mugikorra: hasierako orria eta goiburua prototipoaren berdinak ===== */
+.goiburu-nagusia .pantaila { font-family: "Source Sans 3", sans-serif; font-size: 15px; font-weight: 600; color: #e5e7eb; letter-spacing: 0; }
+.hurrengoak { font-size: 1.75rem; }
+.txartel-mugikorra { background: #fff; border: 1px solid #e7e5e4; border-radius: 14px; overflow: hidden; color: #111827; text-decoration: none; }
+.txartel-mugikorra:hover { color: #111827; }
+.txartel-data { flex: 0 0 86px; line-height: 1; padding: 12px 0; }
+.txartel-data .zenbakia { font-size: 32px; }
+.txartel-data .hilabetea { font-size: 12px; font-weight: 700; letter-spacing: .14em; margin-top: 4px; }
+.txartel-data .ordua { font-size: 13px; font-weight: 600; margin-top: 8px; }
+.txartel-kategoria { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: #4b5563; }
+.txartel-izenburua { font-family: "Archivo", sans-serif; font-size: 17px; font-weight: 700; line-height: 1.2; }
+@media (max-width: 767.98px) {
+    .goiburu-nagusia .marka { font-size: 16px; white-space: nowrap; }
+    .goiburu-nagusia .navbar-brand img { width: 38px; height: 32px; }
+    .izenburua { font-size: 28px; line-height: 1.05; }
+    .denboraldia { font-size: 12px; }
+    .bilatu { border-radius: 999px; padding-left: 42px; }
+    .bilatu-ikonoa { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); }
+    .kategoriak { display: flex; overflow-x: auto; margin: 0 -12px; padding: 0 12px; }
+    .kategoriak .btn { flex: 0 0 auto; }
+    .hurrengoak { font-size: 20px; }
+}
+
+/* Ekitaldiaren xehetasuna: mugikorrean "Sarrerak erosi" botoi handia (prototipoa) */
+@media (max-width: 767.98px) {
+    .erosi-botoia { align-self: stretch !important; min-height: 52px; border-radius: 12px; font-size: 17px; display: flex; align-items: center; justify-content: center; }
+}
+
+/* Ekitaldien kudeaketa mugikorrean (prototipoa) */
+.kolore-puntua { width: 10px; height: 10px; border-radius: 50%; margin-top: 7px; flex: 0 0 auto; }
+.berria-mugikorra { min-height: 52px; border-radius: 12px; font-size: 17px; align-items: center; justify-content: center; gap: 8px; }
+
+/* Profila (prototipoa) */
+.profil-rola { align-self: flex-start; font-size: 12px; font-weight: 700; background: #f3f4f6; color: #374151; padding: 3px 10px; border-radius: 999px; }
+.saioa-itxi-botoia, .saioa-itxi-botoia:hover { color: #991b1b; border-color: #fca5a5; }
+
+/* Ekitaldiaren xehetasuna mugikorrean (prototipoa) */
+.atzera-gezia { min-height: 44px; }
+.atzera-gezia .marka { font-size: 19px; }
+.kategoria-pilula { color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .1em; padding: 5px 12px; border-radius: 999px; }
+@media (max-width: 767.98px) {
+    .ekitaldi-irudia { min-height: 210px; border-radius: 14px; }
+}

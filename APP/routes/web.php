@@ -3,13 +3,14 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Front-end (prototipoa). Back-end-a dutenak web-ekitaldiak.php eta web-sarrerak.php fitxategietan daude
+Route::view('/', 'front-end.home');
+Route::view('/saioa-hasi', 'front-end.login');
+Route::view('/erregistratu', 'front-end.register');
+Route::view('/profila', 'front-end.profile')->name('front-end.profila');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Breeze-k saioa hasi/erregistratu ondoren 'dashboard'-era bidaltzen du: gure hasierara eraman
+Route::redirect('/dashboard', '/')->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -18,3 +19,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/web-erabiltzaileak.php';
+require __DIR__.'/web-ekitaldiak.php';
+require __DIR__.'/web-sarrerak.php';
+
