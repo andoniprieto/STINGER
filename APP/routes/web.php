@@ -10,7 +10,7 @@ Route::view('/saioa-hasi', 'front-end.login');
 Route::view('/erregistratu', 'front-end.register');
 Route::view('/erosi', 'front-end.buy');
 Route::view('/erosita', 'front-end.done');
-Route::view('/sarrerak', 'front-end.tickets');
+//Route::view('/sarrerak', 'front-end.tickets');
 //Route::view('/admin/ekitaldiak', 'front-end.admin.ekitaldiak.index');
 //Route::view('/admin/ekitaldiak/sortu', 'front-end.admin.ekitaldiak.create');
 //Route::view('/admin/ekitaldiak/{id}/editatu', 'front-end.admin.ekitaldiak.edit');
@@ -32,3 +32,4 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 require __DIR__.'/web-erabiltzaileak.php';
 require __DIR__.'/web-ekitaldiak.php';
+require __DIR__.'/web-sarrerak.php';
