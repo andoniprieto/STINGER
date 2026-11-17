@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Rola;
 use App\Models\Ekitaldia;
 use App\Models\Sarrera;
 use Illuminate\Http\Request;
@@ -10,6 +11,8 @@ class EkitaldiakController extends Controller
 {
     public function index()
     {
+        $this->checkAdmin();
+
         $ekitaldiak = Ekitaldia::all();
         $sarrerak = Sarrera::all();
 
@@ -21,11 +24,15 @@ class EkitaldiakController extends Controller
 
     public function create()
     {
+        $this->checkAdmin();
+
         return view('front-end.admin.ekitaldiak.create');
     }
 
     public function store(Request $request)
     {
+        $this->checkAdmin();
+
         Ekitaldia::create($this->datuak($request));
 
         return redirect()->route('front-end.admin.ekitaldiak.index')->with('success', 'Ekitaldia ongi gehitu da!');
@@ -42,6 +49,8 @@ class EkitaldiakController extends Controller
 
     public function edit($id)
     {
+        $this->checkAdmin();
+
         $ekitaldia = Ekitaldia::findOrFail($id);
 
         return view('front-end.admin.ekitaldiak.edit', [
@@ -51,6 +60,8 @@ class EkitaldiakController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->checkAdmin();
+
         $ekitaldia = Ekitaldia::findOrFail($id);
         $ekitaldia->update($this->datuak($request));
 
@@ -59,6 +70,8 @@ class EkitaldiakController extends Controller
 
     public function destroy($id)
     {
+        $this->checkAdmin();
+
         $ekitaldia = Ekitaldia::findOrFail($id);
         $ekitaldia->delete();
 
@@ -88,5 +101,10 @@ class EkitaldiakController extends Controller
         }
 
         return $datuak;
+    }
+
+    private function checkAdmin(): void
+    {
+        abort_unless(auth()->user()?->rola === Rola::Admin, 403, 'Ez duzu baimenik.');
     }
 }

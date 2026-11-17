@@ -42,8 +42,4 @@ class SarrerakController extends Controller
 
         return view('front-end.done', ['sarrera' => $sarrera]);
     }
-
-    // function show($id){
-    //     return view()->w
-    // }
 }

@@ -11,6 +11,8 @@ class ErabiltzaileakController extends Controller
 {
     public function index()
     {
+        $this->checkAdmin();
+
         $erabiltzaileak = User::orderBy('name')->get();
 
         return view('front-end.admin.erabiltzaileak.index', ['erabiltzaileak' => $erabiltzaileak]);
@@ -18,11 +20,15 @@ class ErabiltzaileakController extends Controller
 
     public function create()
     {
+        $this->checkAdmin();
+
         return view('front-end.admin.erabiltzaileak.create');
     }
 
     public function store(Request $request)
     {
+        $this->checkAdmin();
+
         $request->validate([
             'name' => 'required|string|max:255',
             'abizena' => 'required|string|max:255',
@@ -39,6 +45,8 @@ class ErabiltzaileakController extends Controller
 
     public function show($id)
     {
+        $this->checkAdmin();
+
         $erabiltzailea = User::findOrFail($id);
         $sarrerak = $erabiltzailea->sarrerak()->with('ekitaldia')->latest()->get();
 
@@ -50,6 +58,8 @@ class ErabiltzaileakController extends Controller
 
     public function edit($id)
     {
+        $this->checkAdmin();
+
         $erabiltzailea = User::findOrFail($id);
 
         return view('front-end.admin.erabiltzaileak.edit', ['erabiltzailea' => $erabiltzailea]);
@@ -57,6 +67,8 @@ class ErabiltzaileakController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->checkAdmin();
+
         $request->validate([
             'name' => 'required|string|max:255',
             'abizena' => 'required|string|max:255',
@@ -80,6 +92,8 @@ class ErabiltzaileakController extends Controller
 
     public function destroy($id)
     {
+        $this->checkAdmin();
+
         if ((int) $id === auth()->id()) {
             return redirect()->route('front-end.admin.erabiltzaileak.index')->with('error', 'Ezin duzu zure erabiltzailea ezabatu.');
         }
@@ -87,5 +101,10 @@ class ErabiltzaileakController extends Controller
         User::findOrFail($id)->delete();
 
         return redirect()->route('front-end.admin.erabiltzaileak.index')->with('success', 'Erabiltzailea ongi ezabatu da!');
+    }
+
+    private function checkAdmin(): void
+    {
+        abort_unless(auth()->user()?->rola === Rola::Admin, 403, 'Ez duzu baimenik.');
     }
 }
