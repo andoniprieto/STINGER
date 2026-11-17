@@ -1,8 +1,15 @@
 @extends('front-end.layout')
 @section('content')
-<div class="container orria py-5">
+<div class="container orria py-4 py-md-5">
 
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    {{-- Mugikorra: Ekitaldiak / Erabiltzaileak fitxak (prototipoa) --}}
+    <div class="row g-2 mb-3 d-md-none">
+        <div class="col-6"><a href="{{ url('/admin/ekitaldiak') }}" class="btn fitxa w-100">Ekitaldiak</a></div>
+        <div class="col-6"><a href="{{ route('front-end.admin.erabiltzaileak.index') }}" class="btn fitxa aktiboa w-100">Erabiltzaileak</a></div>
+    </div>
+
+    {{-- Mugikorrean ez da izenburua erakusten (prototipoa) --}}
+    <div class="d-none d-md-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
         <div>
             <div class="goiburua gorria text-uppercase">Administrazioa</div>
             <h1 class="mb-0">Erabiltzaileen kudeaketa</h1>
@@ -16,6 +23,12 @@
     @if (session('error'))
         <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
     @endif
+
+    {{-- Mugikorra: botoi handia --}}
+    <a href="{{ route('front-end.admin.erabiltzaileak.create') }}" class="btn btn-gorria w-100 berria-mugikorra d-flex d-md-none mb-3">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+        Erabiltzaile berria
+    </a>
 
     @if ($erabiltzaileak->isEmpty())
         <div class="hutsik p-4 text-center">Oraindik ez dago erabiltzailerik.</div>
@@ -34,7 +47,6 @@
                                 @endif
                             </span>
                             <span class="small text-secondary text-truncate">{{ $u->email }}</span>
-                            <span class="small text-secondary">{{ $u->telefonoa }}</span>
                         </div>
                         <span class="flex-shrink-0">@include('front-end.admin.erabiltzaileak.partials.rola', ['rola' => $u->rola])</span>
                     </div>
