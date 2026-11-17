@@ -12,25 +12,25 @@
             <div class="d-flex flex-column min-w-0">
                 <span class="fw-bold fs-5">{{ $erabiltzailea->name }} {{ $erabiltzailea->abizena }}</span>
                 <span class="text-secondary text-truncate">{{ $erabiltzailea->email }}</span>
-                <span class="mt-1">@include('front-end.admin.erabiltzaileak.partials.rola', ['rola' => $erabiltzailea->rola])</span>
+                {{-- Rola etiketa grisean (prototipoa) --}}
+                <span class="profil-rola mt-1">{{ $erabiltzailea->rola === \App\Enums\Rola::Admin ? 'Administratzailea' : 'Arrunta' }}</span>
             </div>
         </div>
 
-        <div class="formulario-botoiak flex-column">
+        <div class="formulario-botoiak flex-column gap-3">
             <a href="{{ url('/sarrerak') }}" class="btn btn-zuria">Nire sarrerak</a>
             @if ($erabiltzailea->rola === \App\Enums\Rola::Admin)
-                <a href="{{ url('/admin/ekitaldiak') }}" class="btn btn-zuria">Ekitaldien kudeaketa</a>
-                <a href="{{ route('front-end.admin.erabiltzaileak.index') }}" class="btn btn-zuria">Erabiltzaileen kudeaketa</a>
+                <a href="{{ url('/admin/ekitaldiak') }}" class="btn btn-zuria">Kudeaketa panela</a>
             @endif
             <form method="POST" action="{{ route('logout') }}" class="m-0">
                 @csrf
-                <button type="submit" class="btn btn-ezabatu w-100">Saioa itxi</button>
+                <button type="submit" class="btn btn-zuria saioa-itxi-botoia w-100">Saioa itxi</button>
             </form>
         </div>
     @else
         <h1 class="mb-2">Kaixo!</h1>
         <p class="text-secondary mb-4">Bisitari gisa ekitaldiak kontsulta ditzakezu. Sarrerak erosteko, hasi saioa edo sortu kontu bat.</p>
-        <div class="formulario-botoiak flex-column">
+        <div class="formulario-botoiak flex-column gap-3">
             <a href="{{ url('/saioa-hasi') }}" class="btn btn-gorria">Saioa hasi</a>
             <a href="{{ url('/erregistratu') }}" class="btn btn-zuria">Kontua sortu</a>
         </div>

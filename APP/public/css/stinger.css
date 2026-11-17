@@ -252,3 +252,7 @@ a:hover { color: #7f1d1d; }
 /* Ekitaldien kudeaketa mugikorrean (prototipoa) */
 .kolore-puntua { width: 10px; height: 10px; border-radius: 50%; margin-top: 7px; flex: 0 0 auto; }
 .berria-mugikorra { min-height: 52px; border-radius: 12px; font-size: 17px; align-items: center; justify-content: center; gap: 8px; }
+
+/* Profila (prototipoa) */
+.profil-rola { align-self: flex-start; font-size: 12px; font-weight: 700; background: #f3f4f6; color: #374151; padding: 3px 10px; border-radius: 999px; }
+.saioa-itxi-botoia, .saioa-itxi-botoia:hover { color: #991b1b; border-color: #fca5a5; }
