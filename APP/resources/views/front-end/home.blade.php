@@ -45,7 +45,7 @@ $events = [
 
     <div class="row g-3 g-md-4">
         @foreach ($events as $e)
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-4 col-xl-3">
                 {{-- Mugikorra: txartel horizontala, data kategoriaren kolorean (prototipoa) --}}
                 <a href="{{ url('/ekitaldiak/' . $e['id']) }}" class="txartel-mugikorra d-flex d-md-none">
                     <span class="txartel-data d-flex flex-column align-items-center justify-content-center text-white" style="background: {{ $e['color'] }};">
