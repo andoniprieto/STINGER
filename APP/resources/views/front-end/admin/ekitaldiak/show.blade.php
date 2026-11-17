@@ -18,7 +18,7 @@
             <span class="text-secondary fs-5">{{ $e['data'] }} · {{ $e['ordua'] }} · {{ $e['aretoa'] }}</span>
             <p class="mb-0 mt-2">{{ $e['deskribapena'] }}</p>
         </div>
-        <a href="{{ url('/admin/ekitaldiak/'.$e['id'].'/editatu') }}" class="btn btn-zuria botoi-nagusia">Editatu</a>
+        <a href="{{ url('/admin/ekitaldiak/'.$e['id'].'/edit') }}" class="btn btn-zuria botoi-nagusia">Editatu</a>
     </div>
 
     <div class="row g-3 mb-4">

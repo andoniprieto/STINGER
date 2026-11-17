@@ -5,11 +5,11 @@
 --}}
 <footer class="oina d-none d-md-block">
     <div class="container py-4 d-flex flex-wrap justify-content-center align-items-center gap-2 gap-sm-3 text-center">
-        <span class="marka text-white">Bergarako Antzokia</span>
+        <span class="marka text-white">&copy; Bergarako Antzokia</span>
         <span aria-hidden="true">•</span>
-        <span>[Telefonoa]</span>
+        <span>943 76 54 32</span>
         <span aria-hidden="true">•</span>
-        <span>[posta@antzokia.eus]</span>
+        <span>info@bergarakoantzokia.eus</span>
     </div>
 </footer>
 

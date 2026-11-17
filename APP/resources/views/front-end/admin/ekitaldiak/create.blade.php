@@ -5,7 +5,6 @@
     <p class="mb-3"><a href="{{ url('/admin/ekitaldiak') }}" class="itzuli">&larr; Ekitaldien zerrenda</a></p>
     <h1 class="mb-4">Ekitaldi berria</h1>
 
-    {{-- Prototipoa: oraindik ez du daturik gordetzen --}}
     <div class="txartela p-4">
         <form action="{{ url('/admin/ekitaldiak') }}" method="POST" enctype="multipart/form-data">
             @csrf

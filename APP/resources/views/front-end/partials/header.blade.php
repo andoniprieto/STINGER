@@ -12,10 +12,17 @@
     $erabiltzailea = auth()->user();
     $adminDa = $erabiltzailea && $erabiltzailea->rola === \App\Enums\Rola::Admin;
 
-    // Mugikorrean goiburuan zein pantailatan zauden erakusteko (prototipoa)
-    if (request()->is('admin/ekitaldiak/sortu')) {
+    // Ekitaldi bat ikusten (hasieratik edo kudeaketako "Ikusi"-tik)
+    $ekitaldiaIkusten = request()->is('ekitaldiak/*') || request()->routeIs('front-end.admin.ekitaldiak.show');
+    // Mugikorreko geziak nora itzultzen duen
+    $atzera = request()->is('admin/*') ? url('/admin/ekitaldiak') : url('/');
+
+    // Mugikorrean goiburuan zein pantailatan zauden
+    if ($ekitaldiaIkusten) {
+        $pantaila = 'Ekitaldia';
+    } elseif (request()->is('admin/ekitaldiak/create')) {
         $pantaila = 'Ekitaldi berria';
-    } elseif (request()->is('admin/ekitaldiak/*/editatu')) {
+    } elseif (request()->is('admin/ekitaldiak/*/edit')) {
         $pantaila = 'Ekitaldia editatu';
     } elseif (request()->is('admin/erabiltzaileak/create')) {
         $pantaila = 'Erabiltzaile berria';
@@ -23,20 +30,16 @@
         $pantaila = 'Erabiltzailea editatu';
     } elseif (request()->is('admin*')) {
         $pantaila = 'Kudeaketa';
-    } elseif (request()->is('ekitaldiak/*')) {
-        $pantaila = 'Ekitaldia';
-    } elseif (request()->is('saioa-hasi')) {
-        $pantaila = 'Saioa hasi';
-    } elseif (request()->is('erregistratu')) {
-        $pantaila = 'Erregistroa';
-    } elseif (request()->is('erosi')) {
-        $pantaila = 'Sarrerak erosi';
-    } elseif (request()->is('erosita')) {
+    } elseif (request()->is('erosi/*')) {
         $pantaila = 'Erosketa';
     } elseif (request()->is('sarrerak')) {
         $pantaila = 'Nire sarrerak';
     } elseif (request()->is('profila')) {
         $pantaila = 'Profila';
+    } elseif (request()->is('saioa-hasi')) {
+        $pantaila = 'Saioa hasi';
+    } elseif (request()->is('erregistratu')) {
+        $pantaila = 'Erregistroa';
     } else {
         $pantaila = 'Ekitaldiak';
     }
@@ -47,15 +50,15 @@
       <div class="container">
 
         {{-- Mugikorra, ekitaldi baten barruan: atzera gezia + pantailaren izena (prototipoa) --}}
-        @if (request()->is('ekitaldiak/*'))
-            <a href="{{ url('/') }}" class="atzera-gezia d-flex d-md-none align-items-center gap-2 text-white text-decoration-none" aria-label="Atzera">
+        @if ($ekitaldiaIkusten)
+            <a href="{{ $atzera }}" class="atzera-gezia d-flex d-md-none align-items-center gap-2 text-white text-decoration-none" aria-label="Atzera">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
                 <span class="marka">{{ $pantaila }}</span>
             </a>
         @endif
 
         {{-- Logoa: hasierara eramaten du --}}
-        <a class="navbar-brand {{ request()->is('ekitaldiak/*') ? 'd-none d-md-flex' : 'd-flex' }} align-items-center gap-2 text-white" href="{{ url('/') }}">
+        <a class="navbar-brand {{ $ekitaldiaIkusten ? 'd-none d-md-flex' : 'd-flex' }} align-items-center gap-2 text-white" href="{{ url('/') }}">
             <img src="{{ asset('img/logo.png') }}" alt="" width="47" height="40">
             <span class="d-flex flex-column">
                 <span class="marka">Bergarako Antzokia <span class="pantaila d-md-none"><span class="text-secondary mx-1">|</span>{{ $pantaila }}</span></span>
