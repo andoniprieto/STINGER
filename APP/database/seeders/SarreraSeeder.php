@@ -9,6 +9,7 @@ use App\Models\Sarrera;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Str;
 
 class SarreraSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class SarreraSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::where('email', 'user@example.com')
+        $user = User::where('email', 'user@antzokia.eus')
             ->firstOrFail();
 
         $ekitaldia = Ekitaldia::findOrFail(2);
@@ -31,6 +32,7 @@ class SarreraSeeder extends Seeder
             'ekitaldia_id' => $ekitaldia->id,
             'kopurua' => $kopurua,
             'prezio_totala' => $prezio_totala,
+            'kodigoa' => 'BA-' . $ekitaldia->id . '-' . strtoupper(Str::random(5)),
         ]);
     }
 }
