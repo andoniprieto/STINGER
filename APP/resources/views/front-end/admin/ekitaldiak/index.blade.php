@@ -5,6 +5,7 @@
     // Prototipoa: adibide-datu finkoak
     $ekitaldiak = require resource_path('views/front-end/admin/ekitaldiak/partials/adibideak.php');
     $prezioa = fn ($balioa) => number_format((float) $balioa, 2, ',', '.') . ' €';
+    $koloreak = ['Musika' => '#9A3412', 'Antzerkia' => '#1E3A8A', 'Bertsolaritza' => '#9F1239', 'Dantza' => '#6B21A8', 'Haurrak' => '#166534', 'Zinema' => '#334155'];
     $salduta = array_sum(array_column($ekitaldiak, 'salduta'));
     $diruSarrerak = array_sum(array_map(fn ($e) => $e['salduta'] * $e['prezioa'], $ekitaldiak));
 @endphp
@@ -15,7 +16,8 @@
         <div class="col-6"><a href="{{ url('/admin/erabiltzaileak') }}" class="btn fitxa w-100">Erabiltzaileak</a></div>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    {{-- Mugikorrean ez da izenburua erakusten (prototipoa) --}}
+    <div class="d-none d-md-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
         <div>
             <div class="goiburua gorria text-uppercase">Administrazioa</div>
             <h1 class="mb-0">Ekitaldien kudeaketa</h1>
@@ -33,17 +35,23 @@
         <div class="col-4"><div class="txartela estatistika p-3"><div class="small fw-semibold text-secondary">Diru-sarrerak</div><div class="zenbakia">{{ $diruSarrerak }} €</div></div></div>
     </div>
 
+    {{-- Mugikorra: botoia estatistiken azpian --}}
+    <a href="{{ url('/admin/ekitaldiak/sortu') }}" class="btn btn-gorria w-100 berria-mugikorra d-flex d-md-none mb-3">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+        Ekitaldi berria
+    </a>
+
     {{-- Mugikorra: txartelak --}}
     <div class="d-flex flex-column gap-3 d-md-none">
         @foreach ($ekitaldiak as $e)
             <article class="txartela p-3 d-flex flex-column gap-3" data-ekitaldia="{{ $e['id'] }}">
-                <div class="d-flex justify-content-between align-items-start gap-2">
-                    <div class="d-flex flex-column min-w-0">
+                <div class="d-flex align-items-start gap-2">
+                    <span class="kolore-puntua" style="background: {{ $koloreak[$e['kategoria']] ?? '#334155' }};"></span>
+                    <div class="d-flex flex-column">
                         <span class="fw-bold">{{ $e['izenburua'] }}</span>
-                        <span class="small text-secondary">{{ $e['data'] }} · {{ $e['ordua'] }} · {{ $e['aretoa'] }}</span>
-                        <span class="small text-secondary">{{ $e['kategoria'] }} · {{ $e['salduta'] }}/{{ $e['edukiera'] }} salduta</span>
+                        <span class="small text-secondary">{{ date('d/m', strtotime($e['data'])) }} · {{ $e['ordua'] }} · {{ $prezioa($e['prezioa']) }}</span>
+                        <span class="small text-secondary">{{ $e['salduta'] }} / {{ $e['edukiera'] }} salduta</span>
                     </div>
-                    <span class="fw-bold flex-shrink-0">{{ $prezioa($e['prezioa']) }}</span>
                 </div>
                 <div class="mugikor-botoiak">
                     <a href="{{ url('/admin/ekitaldiak/'.$e['id']) }}" class="btn btn-zuria">Ikusi</a>

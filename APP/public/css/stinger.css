@@ -248,3 +248,7 @@ a:hover { color: #7f1d1d; }
 @media (max-width: 767.98px) {
     .erosi-botoia { align-self: stretch !important; min-height: 52px; border-radius: 12px; font-size: 17px; display: flex; align-items: center; justify-content: center; }
 }
+
+/* Ekitaldien kudeaketa mugikorrean (prototipoa) */
+.kolore-puntua { width: 10px; height: 10px; border-radius: 50%; margin-top: 7px; flex: 0 0 auto; }
+.berria-mugikorra { min-height: 52px; border-radius: 12px; font-size: 17px; align-items: center; justify-content: center; gap: 8px; }
