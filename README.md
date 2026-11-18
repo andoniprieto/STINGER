@@ -18,7 +18,9 @@
 8. [4. fasea · Nabigazio-mapa eta prototipoa](#8-4-fasea--nabigazio-mapa-eta-prototipoa)
 9. [5. eta 6. faseak · Garapena](#9-5-eta-6-faseak--garapena)
 10. [Biltegiaren egitura eta lan-fluxua](#10-biltegiaren-egitura-eta-lan-fluxua)
-11. [Hurrengo urratsak](#11-hurrengo-urratsak)
+11. [Makina birtualak eta argitalpena](#11-makina-birtualak-eta-argitalpena)
+12. [Odoo ERP-a](#12-odoo-erp-a)
+13. [Aurkezpena](#13-aurkezpena)
 
 ---
 
@@ -558,9 +560,7 @@ STINGER/
 
 ---
 
-## 11. Hurrengo urratsak
-
-### 11.1 Makina birtualak eta argitalpena (15): DNS-a eta sarea
+## 11. Makina birtualak eta argitalpena
 
 **Sarea.** Makina birtualak ikastetxeko sarean daude:
 
@@ -577,7 +577,9 @@ STINGER/
 
 Urrats guztiak eta frogak: [`Eranskinak/README.md`](Eranskinak/README.md).
 
-### 11.2 Odoo ERP-a (13): beharrak, moduluak, konfigurazioa
+---
+
+## 12. Odoo ERP-a
 
 Odoo **19.0 Community** Docker bidez exekutatzen da Ubuntu Server makinan (`http://192.168.1.3:8069`, `STINGER` datu-basea). Enpresa: Stinger, Bergara (EUR).
 
@@ -617,7 +619,9 @@ CRM (aukera) → Salmentak (aurrekontua) → Proiektua (atazak) → Orduen erreg
 
 📎 Drive: `odoo/Odoo baldintzak.docx`, `odoo/Odoo moduluak.docx`
 
-### 11.3 Aurkezpena (11.6)
+---
+
+## 13. Aurkezpena
 
 - **Aurkezpena (11.6):** Canva-n — <https://www.canva.com/design/DAHbRPJCKoE/4mFjc5uNMWaRLxYZ49dFXA/edit>
 - **Aurreproiektuaren aurkezpena:** <https://canva.link/jm2tek3tx66lbtd>
