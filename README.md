@@ -85,7 +85,7 @@ Windows 11 eta Windows Server-en arteko konparaketa Drive-n dago: `windows 11 vs
 | 5 | Formakuntza | 3 – 9 | 🔄 Lanean |
 | 6 | Webgunearen garapena | 12.5, 14.4 | ✅ Eginda |
 | 7 | Makina birtualak | 15, 15.1, 15.2, 15.3 | 🔄 Lanean (Ubuntu Server eta Windows eginda; DNS-a 15.2.6 eta sarea 15.3 falta) |
-| 8 | Odoo ERP-a | 13, 13.1 – 13.4 | ⏳ Egiteke |
+| 8 | Odoo ERP-a | 13, 13.1 – 13.4 | ✅ Eginda |
 | 9 | Dokumentazioa eta aurkezpena | 10, 11, 11.1 – 11.6 | 🔄 Lanean (README-a eta argitalpen-gida 11.4 eginda) |
 
 **Webgunearen garapena (12.5) xehetasunez**
@@ -580,7 +580,64 @@ STINGER/
 
 ## 11. Hurrengo urratsak
 
-- **Garapena (12.5 – 12.8):** hasierako bilatzailea eta iragazkiak zerbitzarira eraman, eta ekitaldien CRUD-aren eta sarreren frogak gehitu.
-- **Makina birtualak eta argitalpena (15):** DNS-a eta sarea amaitu.
-- **Odoo ERP-a (13):** beharrak, moduluak, konfigurazioa, frogak, mantentze-plana eta segurtasun-kopiak.
-- **Memoria eta aurkezpena (10, 11.6).**
+### 11.1 Makina birtualak eta argitalpena (15): DNS-a eta sarea
+
+**Sarea.** Makina birtualak ikastetxeko sarean daude:
+
+| Makina | IP helbidea | Zerbitzuak |
+|---|---|---|
+| Ubuntu Server | `192.168.1.3` | Odoo + PostgreSQL (Docker), `:8069` portuan |
+| Windows 11 | `192.168.1.2` | Apache Lounge + PHP + MySQL (web aplikazioa) |
+
+**DNS-a.** Web aplikazioa `bergara.antzokia.eus` izenarekin argitaratzen da:
+
+- Apache-ko Virtual Host-ak `bergara.antzokia.eus` izena `C:/www/STINGER/APP/public` karpetara bideratzen du.
+- Izena `hosts` fitxategian ebazten da (`127.0.0.1 bergara.antzokia.eus`).
+- Suebakian 80 (HTTP) eta 443 (HTTPS) portuak irekita daude.
+
+Urrats guztiak eta frogak: [`Eranskinak/README.md`](Eranskinak/README.md).
+
+### 11.2 Odoo ERP-a (13): beharrak, moduluak, konfigurazioa
+
+Odoo **19.0 Community** Docker bidez exekutatzen da Ubuntu Server makinan (`http://192.168.1.3:8069`, `STINGER` datu-basea). Enpresa: Stinger, Bergara (EUR).
+
+**Beharrak.** Erronkak sei baldintza eskatzen ditu, eta guztiak beteta daude:
+
+| Baldintza | Moduluak | Stinger-en datuak |
+|---|---|---|
+| Erabiltzaileak eta baimenak | Oinarria, Izen-ematea | 4 barneko erabiltzaile 3 rolekin + atariko 1 erabiltzaile |
+| Odoo-ren mantenua | Mantenua, Mantenua - GB | 2 ekipo, 2 mantentze-eskaera |
+| Erosketa kudeaketa | Erosketak | 1 hornitzaile, 2 eros-eskaera |
+| Ekitaldien eta aretoen kudeaketa | Ekitaldiak, Ekitaldien salmentak, Webguneko ekitaldiak | 2 areto, 2 ekitaldi, 3 sarrera mota |
+| Langileen kudeaketa | Langileak, Opor-egunak, Asistentziak, Gaitasunak | 4 langile, 2 sail |
+| Ataria | Ataria, Webgunea | Bergarako Antzokiaren atariko erabiltzailea |
+
+**Moduluak.** Enpresaren kudeaketa-fluxua:
+
+```
+CRM (aukera) → Salmentak (aurrekontua) → Proiektua (atazak) → Orduen erregistroa → Fakturazioa
+```
+
+| Modulua | Zertarako | Stinger-en datuak |
+|---|---|---|
+| Kontaktuak | Bezero eta hornitzaileen zerrenda bakarra | Bergarako Antzokia |
+| CRM | Salmenta-aukeren jarraipena | Aukera bat, irabazita (4.800 €) |
+| Salmentak | Aurrekontuak eta salmenta-eskaerak | 2 zerbitzu, S00001 eskaera |
+| Proiektua | Lana proiektu eta atazatan antolatu | *Bergarako Antzokia: web aplikazioa* |
+| Orduen erregistroa | Orduak apuntatu eta fakturatu | 30 ordu (3 langile) |
+| Fakturazioa | Fakturak eta kontabilitatea (Espainiako lokalizazioa, BEZa % 21) | INV/2026/00001 faktura |
+| Langileak | Langileen fitxak eta sailak | Garapena saila, 3 langile |
+
+**Konfigurazioa.**
+
+- **Erabiltzaileak eta rolak:** administratzailea; Andoni (kudeatzailea); Iñigo (ekitaldiak); Hodei (erosketak eta mantenua); Bergarako Antzokia (atariko bezeroa). Erabiltzaile bakoitzak bere lanerako baimenak bakarrik ditu.
+- **Ekitaldiak:** *Areto Nagusia* (300 lagun) eta *Areto Txikia* (40 lagun), ekitaldiaren *Kokalekua* eremuan aukeratuta. Ekitaldiak webgunean (`/event`) argitaratuta daude.
+- **Ataria:** izen-ematea irekita (b2c); bezeroek `/my` orrian ikusten dituzte eskaerak eta fakturak.
+- **Mantenua:** segurtasun-kopiak `/web/database/manager` orritik egiten dira, eta moduluak *Aplikazioak* menutik eguneratzen dira.
+
+📎 Drive: `odoo/Odoo baldintzak.docx`, `odoo/Odoo moduluak.docx`
+
+### 11.3 Aurkezpena (11.6)
+
+- **Aurkezpena (11.6):** Canva-n — <https://www.canva.com/design/nDAHbLXeuYIE/CRNNqIsuniGkND7DmWNuLw/edit>
+- **Aurreproiektuaren aurkezpena:** <https://canva.link/jm2tek3tx66lbtd>
