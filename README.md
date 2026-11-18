@@ -81,12 +81,12 @@ Windows 11 eta Windows Server-en arteko konparaketa Drive-n dago: `windows 11 vs
 | 1 | Analisia | 1, 1.1, 1.2, 1.3 | ✅ Eginda |
 | 2 | Aurreproiektua (datu-basea eta erabilera-kasuak) | 2, 14, 14.1 (14.1.1 – 14.1.3), 14.2, 14.3 | ✅ Eginda |
 | 3 | Identitate bisuala | 12.1, 12.1.1, 12.1.2, 12.1.3 | ✅ Eginda |
-| 4 | Bozetoa, nabigazio-mapa eta prototipoa | 12.2, 12.3, 12.4 | ✅ Eginda (bozetoa estekatzeke) |
-| 5 | Formakuntza | 3 – 9 | 🔄 Lanean |
+| 4 | Bozetoa, nabigazio-mapa eta prototipoa | 12.2, 12.3, 12.4 | ✅ Eginda |
+| 5 | Formakuntza | 3 – 9 | ✅ Eginda |
 | 6 | Webgunearen garapena | 12.5, 14.4 | ✅ Eginda |
-| 7 | Makina birtualak | 15, 15.1, 15.2, 15.3 | 🔄 Lanean (Ubuntu Server eta Windows eginda; DNS-a 15.2.6 eta sarea 15.3 falta) |
+| 7 | Makina birtualak | 15, 15.1, 15.2, 15.3 | ✅ Eginda |
 | 8 | Odoo ERP-a | 13, 13.1 – 13.4 | ✅ Eginda |
-| 9 | Dokumentazioa eta aurkezpena | 10, 11, 11.1 – 11.6 | 🔄 Lanean (README-a eta argitalpen-gida 11.4 eginda) |
+| 9 | Dokumentazioa eta aurkezpena | 10, 11, 11.1 – 11.6 | ✅ Eginda |
 
 **Webgunearen garapena (12.5) xehetasunez**
 
