@@ -17,10 +17,8 @@
 7. [3. fasea · Identitate bisuala](#7-3-fasea--identitate-bisuala)
 8. [4. fasea · Nabigazio-mapa eta prototipoa](#8-4-fasea--nabigazio-mapa-eta-prototipoa)
 9. [5. eta 6. faseak · Garapena](#9-5-eta-6-faseak--garapena)
-10. [Instalazioa (garapen-ingurunea)](#10-instalazioa-garapen-ingurunea)
-11. [Argitalpena (Windows + Apache Lounge)](#11-argitalpena-windows--apache-lounge)
-12. [Biltegiaren egitura eta lan-fluxua](#12-biltegiaren-egitura-eta-lan-fluxua)
-13. [Hurrengo urratsak](#13-hurrengo-urratsak)
+10. [Biltegiaren egitura eta lan-fluxua](#10-biltegiaren-egitura-eta-lan-fluxua)
+11. [Hurrengo urratsak](#11-hurrengo-urratsak)
 
 ---
 
@@ -38,7 +36,7 @@ Proiektuak bi zati ditu:
 ### Helburuak
 
 - Edonork antzokiaren **ekitaldiak kontsultatu** ahal izatea, ordenagailuan zein mugikorrean.
-- Erabiltzaile erregistratuek **sarrerak erosi** ahal izatea, saioa eta eserlekua aukeratuta.
+- Erabiltzaile erregistratuek **sarrerak erosi** ahal izatea.
 - Administratzaileek **ekitaldiak, saioak, erabiltzaileak eta erosketak kudeatu** ahal izatea.
 - Webgunea **euskaraz** egotea eta **irisgarria** izatea (WCAG AA).
 
@@ -64,10 +62,9 @@ Analisi-fasean aukeratutako erremintak (1.2 zeregina):
 | Frontend | **Blade**, **Bootstrap 5.3** (CDN) eta CSS propioa (`public/css`) | Bistak eta estiloak, prototipoaren arabera |
 | Frontend (Breeze) | **Tailwind CSS**, **Alpine.js**, **Vite** | Breeze-k ekarritako autentifikazio-bistak |
 | Autentifikazioa | **Laravel Breeze** | Saio-hasiera, erregistroa eta pasahitza berrezartzea |
-| Frogak | **Pest** | Feature eta unit frogak |
-| Datu-basea (weba) | **MySQL** | Ekitaldiak, saioak, eserlekuak, sarrerak, erabiltzaileak |
+| Datu-basea (weba) | **MySQL** | Ekitaldiak, sarrerak eta erabiltzaileak |
 | Web zerbitzaria | **Apache Lounge** | Weba Windows-en argitaratzeko |
-| ERP-a | **Odoo** (Docker) + **PostgreSQL** | Stinger enpresaren kudeaketa |
+| ERP-a | **Odoo** + **PostgreSQL** (biak Docker-en) | Stinger enpresaren kudeaketa |
 | Birtualizazioa | **VMware** | Ubuntu Server eta Windows 11 makina birtualak |
 | Diseinua | **Figma**, **draw.io** | Prototipoa, E-R eredua, erabilera-kasuak, nabigazio-mapa |
 | Kudeaketa | **GitHub** (issues, Projects, adarrak) eta **Google Drive** | Zereginak, kodea eta dokumentazioa |
@@ -82,12 +79,30 @@ Windows 11 eta Windows Server-en arteko konparaketa Drive-n dago: `windows 11 vs
 | # | Fasea | Zereginak | Egoera |
 |---|---|---|---|
 | 1 | Analisia | 1, 1.1, 1.2, 1.3 | ✅ Eginda |
-| 2 | Aurreproiektua (datu-basea eta erabilera-kasuak) | 2, 14.1, 14.2, 14.3 | ✅ Eginda |
+| 2 | Aurreproiektua (datu-basea eta erabilera-kasuak) | 2, 14, 14.1 (14.1.1 – 14.1.3), 14.2, 14.3 | ✅ Eginda |
 | 3 | Identitate bisuala | 12.1, 12.1.1, 12.1.2, 12.1.3 | ✅ Eginda |
 | 4 | Bozetoa, nabigazio-mapa eta prototipoa | 12.2, 12.3, 12.4 | ✅ Eginda (bozetoa estekatzeke) |
-| 5 | Formakuntza | 3–9 | 🔄 Lanean |
-| 6 | Garapena (weba, Odoo, makina birtualak) | 12.5–12.8, 13, 14.4, 15 | 🔄 Lanean |
-| 7 | Dokumentazioa eta aurkezpena | 10, 11 | ⏳ Egiteke |
+| 5 | Formakuntza | 3 – 9 | 🔄 Lanean |
+| 6 | Webgunearen garapena | 12.5, 14.4 | ✅ Eginda |
+| 7 | Makina birtualak | 15, 15.1, 15.2, 15.3 | 🔄 Lanean (Ubuntu Server eta Windows eginda; DNS-a 15.2.6 eta sarea 15.3 falta) |
+| 8 | Odoo ERP-a | 13, 13.1 – 13.4 | ⏳ Egiteke |
+| 9 | Dokumentazioa eta aurkezpena | 10, 11, 11.1 – 11.6 | 🔄 Lanean (README-a eta argitalpen-gida 11.4 eginda) |
+
+**Webgunearen garapena (12.5) xehetasunez**
+
+| Zeregina | Atala | Egoera |
+|---|---|---|
+| 12.5.1 | Ekitaldiak (front-end eta back-end) | ✅ |
+| 12.5.2 | Erabiltzaileak (CRUD-a) | ✅ |
+| 12.5.3 | Sarrerak (front-end eta back-end) | ✅ |
+| 12.5.4 | Footer-a (ordenagailua eta mugikorra) | ✅ |
+| 12.5.5 | Kategoriak | ❌ Baztertuta: kategoria ekitaldiaren eremu bat da |
+| 12.5.6 | Sarrerak erosi | ✅ |
+| 12.5.7 | Ekitaldien kudeaketa | ✅ |
+| 12.5.8 | Orri nagusia | ✅ |
+| 12.5.9 | Saioa hasi eta erregistratu | ✅ |
+| 12.5.10 | Front-end eta back-end adarrak bateratu | ✅ |
+| 14.4 | Migrazioak eta seeder-ak | ✅ |
 
 Zereginen zerrenda osoa GitHub-eko Project-ean dago.
 
@@ -104,7 +119,7 @@ Bergarako Antzokiaren eskaera aztertu eta eskakizunak atera ditugu.
 - Ekitaldien zerrenda ikusi, bilatu eta kategoriaren edo dataren arabera iragazi.
 - Ekitaldi baten xehetasunak ikusi: deskribapena, prezioa, kategoriak eta saioak.
 - Erregistratu eta saioa hasi.
-- Sarrerak erosi: saioa aukeratu, sarrera kopurua, eserlekuak aretoaren mapan, ordainketa (simulatua) eta berrespena.
+- Sarrerak erosi: sarrera kopurua aukeratu, ordainketa (simulatua) eta berrespena.
 - Nire sarrerak ikusi.
 - Administratzailea: ekitaldiak eta saioak sortu, editatu eta ezabatu; erabiltzaileak kudeatu; erosketen zerrenda ikusi.
 
@@ -113,7 +128,6 @@ Bergarako Antzokiaren eskaera aztertu eta eskakizunak atera ditugu.
 - Diseinu moldagarria: ordenagailua (1440 px) eta mugikorra (390 px).
 - Interfazea euskaraz.
 - Irisgarritasuna: kontrastea (WCAG AA), foku ikusgaia eta irudien testu alternatiboa.
-- Eserleku bera ezin da saio berean bi aldiz saldu.
 
 ### 5.2 Erremintak (1.2)
 
@@ -160,25 +174,18 @@ Erabilera-kasu nagusiak: *Ekitaldiak kontsultatu*, *Login-a egin*, *Sarrerak ero
 | Entitatea | Deskribapena |
 |---|---|
 | **Erabiltzailea** | Izena, abizena, emaila, telefonoa, pasahitza eta rola (`admin` / `user`) |
-| **Ekitaldia** | Izenburua, deskribapena eta prezioa |
-| **Kategoria** | Ekitaldi motak (antzerkia, musika, dantza…) |
-| **Aretoa** | Antzokiko aretoak |
-| **Eserlekua** | Areto bateko eserlekua (ilara + zenbakia) |
-| **Saioa** | Ekitaldi baten emanaldia: aretoa, data eta ordua |
-| **Sarrera** | Erabiltzaile batek saio baterako erositako eserlekua, prezioa eta erosketa-data |
+| **Ekitaldia** | Izenburua, deskribapena, kategoria, data, ordua, prezioa, irudia, edukiera eta aretoa |
+| **Sarrera** | Erabiltzaile batek ekitaldi baterako egindako erosketa: sarrera kopurua, prezio totala eta kode bakarra |
 
 **Erlazio nagusiak**
 
 ```
-Ekitaldia  N ── M  Kategoria
-Ekitaldia  1 ── N  Saioa  N ── 1  Aretoa
-Aretoa     1 ── N  Eserlekua
-Sarrera    N ── 1  Erabiltzailea
-Sarrera    N ── 1  Saioa
-Sarrera    N ── 1  Eserlekua      (eserleku + saio bikotea bakarra da)
+Erabiltzailea  1 ── N  Sarrera  N ── 1  Ekitaldia
 ```
 
-Eserleku baten egoera (librea / salduta) ez da eserlekuan gordetzen: **saio bakoitzeko** kalkulatzen da, saio horretarako sarrerarik dagoen ala ez begiratuta.
+- Erabiltzaile batek sarrera asko eros ditzake, eta ekitaldi batek sarrera asko ditu.
+- Kategoria eta aretoa ekitaldiaren eremuak dira (ez dute taula propiorik).
+- Ekitaldi baten leku libreak kalkulatu egiten dira: `edukiera − saldutako sarrerak`.
 
 **Eredu erlazionala (14.1.2) eta aldagaiak (14.1.3).** Taulak, gako nagusiak, atzerriko gakoak eta eremu bakoitzaren mota eta murriztapenak.
 
@@ -189,7 +196,7 @@ Eserleku baten egoera (librea / salduta) ez da eserlekuan gordetzen: **saio bako
 - `Aurreproiektua/Eredu_erlazionala.drawio`
 - `Datu Basea/DB_STINGER.sql`
 
-> Garapen-fasean datu-basea Laravel-eko migrazioetara eraman da (`APP/database/migrations`) eta eredua **sinplifikatu** egin da: saioa, aretoa eta kategoria ekitaldiaren eremu bihurtu dira, eta sarrera batek kopuru bat gordetzen du (eserlekurik gabe). Azken eredua [9.2 atalean](#92-datu-basea-azken-eredua) dago.
+> Datu-basea Laravel-eko migrazioekin sortzen da (`APP/database/migrations`). Taulen xehetasunak [9.2 atalean](#92-datu-basea) daude.
 
 ---
 
@@ -224,9 +231,9 @@ Horrez gain, **kategoria bakoitzak bere kolorea** du, eta **egoera-koloreak** da
 
 | Etiketa | Noiz |
 |---|---|
-| **Leku libreak** | Eserlekuen % 15 baino gehiago libre |
-| **Azken sarrerak** | Eserlekuen % 15 edo gutxiago libre |
-| **Agortuta** | Eserleku libre gabe |
+| **Leku libreak** | Lekuen % 15 baino gehiago libre |
+| **Azken sarrerak** | Lekuen % 15 edo gutxiago libre |
+| **Agortuta** | Leku libre gabe |
 
 ---
 
@@ -245,7 +252,6 @@ Hasiera (ekitaldien zerrenda)
 ├── Ekitaldiaren xehetasunak
 │   └── Sarrerak erosi
 │       ├── Saioa eta sarrera kopurua aukeratu
-│       ├── Eserlekuak aukeratu
 │       ├── Ordainketa
 │       └── Berrespena
 ├── Saioa hasi / Erregistratu
@@ -270,7 +276,7 @@ Prototipoan agertzen diren elementu nagusiak:
 - **Hasiera:** bilatzailea, kategoria eta data iragazkiak, *Iragazkiak garbitu* botoia eta ekitaldi-txartelak egoera-etiketekin.
 - **Ekitaldi-txartela:** irudia (edo kategoriaren kolorea), izenburua, data, prezioa eta *Xehetasunak ikusi* botoia.
 - **Xehetasunak:** deskribapena, saioak, prezioa eta erosteko botoia.
-- **Erosketa-prozesua:** saioa, sarrera kopurua, eserlekuen mapa eta berrespena.
+- **Erosketa-prozesua:** sarrera kopurua, ordainketa eta berrespena.
 - **Administrazio-panela:** ekitaldiak, erabiltzaileak eta *Erosketak*.
 
 📎 Drive: `Aurreproiektua/Prototipo/` (Figma esteka eta HTML prototipoak)
@@ -308,9 +314,9 @@ routes/*.php  ──►  Middleware (auth, verified)  ──►  Kontrolatzailea
 | Datu-basea | `APP/database/` | Migrazioak, factory-ak eta seeder-ak |
 | Frogak | `APP/tests/` | Pest frogak (`Feature` eta `Unit`) |
 
-### 9.2 Datu-basea (azken eredua)
+### 9.2 Datu-basea
 
-Aurreproiektuko eredua sinplifikatu egin da garapenean. Taula nagusiak:
+Taulak migrazioekin sortzen dira (`APP/database/migrations`). Taula nagusiak:
 
 **`users`** (Laravel-en taula + gure eremuak)
 
@@ -542,91 +548,7 @@ php artisan test
 
 ---
 
-## 10. Instalazioa (garapen-ingurunea)
-
-### Baldintzak
-
-- PHP **8.3** edo berriagoa (`pdo_mysql`, `mbstring`, `openssl`, `fileinfo`, `intl`, `zip` luzapenekin)
-- Composer
-- Node.js eta npm
-- MySQL (edo SQLite, proba azkarretarako)
-- Git
-
-### Urratsak
-
-```bash
-# 1. Biltegia klonatu
-git clone https://github.com/andoniprieto/STINGER.git
-cd STINGER/APP
-
-# 2. Dependentziak
-composer install
-npm install
-
-# 3. Ingurunea
-cp .env.example .env
-php artisan key:generate
-```
-
-`.env` fitxategian datu-basea konfiguratu:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=db_stinger
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-```bash
-# 4. Taulak eta proba-datuak
-php artisan migrate --seed
-
-# 5. Igotako irudiak publiko egiteko
-php artisan storage:link
-
-# 6. Frontend-a konpilatu (Breeze-ren bistetarako)
-npm run build
-
-# 7. Zerbitzaria abiarazi
-php artisan serve
-```
-
-Aplikazioa <http://localhost:8000> helbidean egongo da. Saioa hasi [proba-erabiltzaileekin](#99-seeder-ak-eta-proba-datuak).
-
-Datu-basea hutsetik berriz sortzeko:
-
-```bash
-php artisan migrate:fresh --seed
-```
-
----
-
-## 11. Argitalpena (Windows + Apache Lounge)
-
-Web aplikazioa Windows 11 makina birtualean argitaratzeko gida osoa eranskinean dago:
-
-📎 [`Eranskinak/README.md`](Eranskinak/README.md) — *Web orrialdea publikatzeko pausuak*
-
-Laburpena:
-
-| # | Urratsa |
-|---|---|
-| 1 | PHP konfiguratu (`php.ini` luzapenak eta `cacert.pem`) |
-| 2 | Apache Lounge konfiguratu (`mod_rewrite`, `mod_ssl`, `mod_headers`, `mod_fcgid`) |
-| 3 | Apache zerbitzu gisa instalatu eta suebakian 80 / 443 portuak ireki |
-| 4 | Proiektua `C:\www\STINGER` karpetan klonatu eta `composer install --no-dev` |
-| 5 | `.env` produkziorako (`APP_ENV=production`, `APP_DEBUG=false`, MySQL) |
-| 6 | `php artisan migrate --force` |
-| 7 | `npm ci` eta `npm run build` |
-| 8 | `storage:link` eta cacheak (`config`, `route`, `view`, `event`) |
-| 9 | Virtual Host-a (`bergara.antzokia.eus` → `APP/public`) eta `hosts` fitxategia |
-| 10 | Azken probak (`200 OK`, eta `404` `.env`-erako) |
-
----
-
-## 12. Biltegiaren egitura eta lan-fluxua
+## 10. Biltegiaren egitura eta lan-fluxua
 
 ```
 STINGER/
@@ -656,9 +578,9 @@ STINGER/
 
 ---
 
-## 13. Hurrengo urratsak
+## 11. Hurrengo urratsak
 
-- **Garapena (12.5 – 12.8):** hasierako bilatzailea eta iragazkiak zerbitzarira eraman, eserlekuen mapa, eta ekitaldien CRUD-aren eta sarreren frogak gehitu.
+- **Garapena (12.5 – 12.8):** hasierako bilatzailea eta iragazkiak zerbitzarira eraman, eta ekitaldien CRUD-aren eta sarreren frogak gehitu.
 - **Makina birtualak eta argitalpena (15):** DNS-a eta sarea amaitu.
 - **Odoo ERP-a (13):** beharrak, moduluak, konfigurazioa, frogak, mantentze-plana eta segurtasun-kopiak.
 - **Memoria eta aurkezpena (10, 11.6).**
