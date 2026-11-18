@@ -312,7 +312,6 @@ routes/*.php  ──►  Middleware (auth, verified)  ──►  Kontrolatzailea
 | Bistak | `APP/resources/views/front-end/` | Prototipoko orriak eta administrazio-panela |
 | Estiloak | `APP/public/css/` | `stinger.css` (orokorra), `ekitaldiak.css`, `saioa.css` |
 | Datu-basea | `APP/database/` | Migrazioak, factory-ak eta seeder-ak |
-| Frogak | `APP/tests/` | Pest frogak (`Feature` eta `Unit`) |
 
 ### 9.2 Datu-basea
 
@@ -528,24 +527,6 @@ Orri guztiak hiru tamainatara egokitzen dira (Bootstrap-en *breakpoint*-ak):
 
 > Kontu hauek garapenerako bakarrik dira. Produkzioan pasahitzak aldatu.
 
-### 9.10 Frogak
-
-Frogak **Pest**-ekin idatzita daude (`APP/tests`):
-
-| Fitxategia | Zer frogatzen du |
-|---|---|
-| `Feature/ErabiltzaileakTest.php` | Erabiltzaileen CRUD-a: zerrenda, fitxa, sortu, editatu (pasahitza aldatu gabe), ezabatu eta norbera ezin ezabatu |
-| `Feature/Auth/*` | Breeze-ren autentifikazioa: saio-hasiera, erregistroa, emaila egiaztatu, pasahitza berrezarri eta eguneratu |
-| `Feature/ProfileTest.php` | Profila editatu eta ezabatu |
-| `Feature/ExampleTest.php` | Hasiera-orriak 200 erantzuten du |
-
-Exekutatzeko:
-
-```bash
-cd APP
-php artisan test
-```
-
 ---
 
 ## 10. Biltegiaren egitura eta lan-fluxua
@@ -557,8 +538,7 @@ STINGER/
 │   ├── database/         Migrazioak, factory-ak, seeder-ak
 │   ├── public/           Sarrera-puntua, CSS-a eta irudiak
 │   ├── resources/views/  Blade bistak
-│   ├── routes/           Bideak
-│   └── tests/            Pest frogak
+│   └── routes/           Bideak
 ├── Eranskinak/           Argitalpen-gida
 └── README.md             Dokumentu hau
 ```
