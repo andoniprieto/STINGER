@@ -592,7 +592,7 @@ STINGER/
 **DNS-a.** Web aplikazioa `bergara.antzokia.eus` izenarekin argitaratzen da:
 
 - Apache-ko Virtual Host-ak `bergara.antzokia.eus` izena `C:/www/STINGER/APP/public` karpetara bideratzen du.
-- Izena `hosts` fitxategian ebazten da (`127.0.0.1 bergara.antzokia.eus`).
+- DNS zerbitzari bat instalatu da (**AdGuard Home**, Windows-en), eta `bergara.antzokia.eus` izena `192.168.1.2` helbidera ebazten du.
 - Suebakian 80 (HTTP) eta 443 (HTTPS) portuak irekita daude.
 
 Urrats guztiak eta frogak: [`Eranskinak/README.md`](Eranskinak/README.md).
