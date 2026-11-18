@@ -12,7 +12,7 @@ Dokumentu honek **Bergarako Antzokiaren** Laravel proiektua Windows-en **Apache 
 6. [Datu-basea](#6-datu-basea)
 7. [Frontend-a](#7-frontend-a)
 8. [Storage eta cachea](#8-storage-eta-cachea)
-9. [Virtual Host eta DNS lokala](#9-virtual-host-eta-dns-lokala)
+9. [Virtual Host eta DNS](#9-virtual-host-eta-dns)
 10. [Azken probak](#10-azken-probak)
 
 ### Aurrebaldintzak
@@ -296,7 +296,7 @@ php artisan event:cache
 
 ---
 
-## 9. Virtual Host eta DNS lokala
+## 9. Virtual Host eta DNS
 
 ### Virtual Host
 
@@ -328,6 +328,43 @@ C:\Apache24\bin\httpd.exe -t
 # Apache zerbitzua berrabiarazi
 Restart-Service Apache2.4
 ```
+
+### DNS zerbitzaria: AdGuard Home
+
+Sareko DNS zerbitzari gisa **AdGuard Home** (Windows) erabiltzen da. Horrela, sareko beste makinek ere `bergara.antzokia.eus` izena ebatz dezakete.
+
+Deskargatu `AdGuardHome_windows_arm64.zip`: <https://github.com/AdguardTeam/AdGuardHome/releases> eta `C:\AdGuardHome` karpetan deskonprimatu.
+
+PowerShell **administratzaile gisa** ireki eta zerbitzu gisa instalatu:
+
+```powershell
+cd C:\AdGuardHome
+.\AdGuardHome.exe -s install
+```
+
+Nabigatzailean <http://127.0.0.1:3000> ireki eta hasierako konfigurazioa egin (DNS zerbitzaria **53** portuan).
+
+**DNS berridazketa gehitu** (*Filters > DNS rewrites*):
+
+| Domeinua | Erantzuna |
+|---|---|
+| `bergara.antzokia.eus` | `192.168.1.2` |
+
+### 53 portua suebakian baimendu
+
+PowerShell **administratzaile gisa** ireki:
+
+```powershell
+New-NetFirewallRule -DisplayName "DNS UDP" -Direction Inbound -Protocol UDP -LocalPort 53 -Action Allow
+New-NetFirewallRule -DisplayName "DNS TCP" -Direction Inbound -Protocol TCP -LocalPort 53 -Action Allow
+```
+
+### Probak
+
+| Komandoa | Espero den emaitza |
+|---|---|
+| `Get-Service AdGuardHome` | `Running` |
+| `nslookup bergara.antzokia.eus 192.168.1.2` | `Address: 192.168.1.2` |
 
 ---
 
