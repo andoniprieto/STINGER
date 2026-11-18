@@ -623,5 +623,5 @@ CRM (aukera) → Salmentak (aurrekontua) → Proiektua (atazak) → Orduen erreg
 
 ## 13. Aurkezpena
 
-- **Aurkezpena (11.6):** Canva-n — <https://www.canva.com/design/DAHbRPJCKoE/4mFjc5uNMWaRLxYZ49dFXA/edit>
+- **Aurkezpena (11.6):** Canva-n — <https://www.canva.com/design/DAHbRWsKbno/x7HB0kr8bVRtEZSvicz08A/edit>
 - **Aurreproiektuaren aurkezpena:** <https://canva.link/jm2tek3tx66lbtd>
